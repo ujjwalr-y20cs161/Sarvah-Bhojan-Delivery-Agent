@@ -42,8 +42,11 @@ public class LogIn extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Toast.makeText(LogIn.this, email.getText(), Toast.LENGTH_SHORT).show();
+                if(!email.getText().equals("") && !password.getText().equals("")){
+                    loginUser(email.getText().toString(),password.getText().toString());
+                }else{
+                    Toast.makeText(LogIn.this, "Enter Valid Credentials", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -52,6 +55,8 @@ public class LogIn extends AppCompatActivity {
             public void onClick(View view) {
                 if(!email.getText().equals("") && !password.getText().equals("")){
                     registerUser(email.getText().toString(),password.getText().toString());
+                }else{
+                    Toast.makeText(LogIn.this, "Enter Valid Credentials", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -59,7 +64,11 @@ public class LogIn extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LogIn.this, "OTP is sent to your mail!", Toast.LENGTH_SHORT).show();
+                if(!email.getText().equals("")){
+                    resetPassword(email.getText().toString());
+                }else{
+                    Toast.makeText(LogIn.this, "Enter Valid Credentials", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -67,11 +76,39 @@ public class LogIn extends AppCompatActivity {
     public void registerUser(String Email,String Pswd){
         mAuth.createUserWithEmailAndPassword(Email,Pswd).addOnCompleteListener(task -> {
             if(task.isSuccessful()){
-                Toast.makeText(getApplicationContext(), "You have successfully registered!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this,Landing.class));
+                FirebaseUser user = mAuth.getCurrentUser();
+                Toast.makeText(getApplicationContext(), "You have successfully registered!"+user.getEmail(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this,Landing.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
                 finish();
             }else{
-                Toast.makeText(this, "Registration Unsuccessful!! Try Again Later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Registration Unsuccessful, Try Again Later!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public  void loginUser(String Email,String Pswd){
+        mAuth.signInWithEmailAndPassword(Email,Pswd).addOnCompleteListener((task -> {
+            if(task.isSuccessful()){
+                FirebaseUser user = mAuth.getCurrentUser();
+                Toast.makeText(this, "Welcome Back! "+user.getEmail(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this,Landing.class);
+                intent.putExtra("user",user);
+                startActivity(intent);
+                finish();
+            }else{
+                Toast.makeText(this, "Login Unsuccessful, Try Again!", Toast.LENGTH_SHORT).show();
+            }
+        }));
+    }
+
+    public void resetPassword(String Email){
+        mAuth.sendPasswordResetEmail(Email).addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                Toast.makeText(LogIn.this, "Password reset link is sent to your mail!", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "Unsuccessful Request,Try Again!", Toast.LENGTH_SHORT).show();
             }
         });
     }
