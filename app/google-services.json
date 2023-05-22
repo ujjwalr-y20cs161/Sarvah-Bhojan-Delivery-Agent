@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "74698782759",
+    "project_id": "deliveryauth-b0b4b",
+    "storage_bucket": "deliveryauth-b0b4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74698782759:android:eef229eb76cc42f42ef602",
+        "android_client_info": {
+          "package_name": "com.example.sarvah_bhojan_delivery_agent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "74698782759-hhcs6cn8hnr72ec9lc5382lpmj6bm4b6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRRTU6d3ITlX78kHX4ClAk6IOF9gwdRc4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "74698782759-hhcs6cn8hnr72ec9lc5382lpmj6bm4b6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

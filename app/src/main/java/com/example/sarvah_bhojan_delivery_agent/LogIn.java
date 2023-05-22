@@ -2,6 +2,7 @@ package com.example.sarvah_bhojan_delivery_agent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,13 +19,18 @@ public class LogIn extends AppCompatActivity {
 
     private Button signIn,signUp,forgotPassword;
     private TextInputEditText email,password;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         DynamicColors.applyToActivityIfAvailable(this);
 
         FirebaseApp.initializeApp(this);
+        mAuth = FirebaseAuth.getInstance();
+
 
         signIn = (Button) findViewById(R.id.SignIn);
         signUp = (Button) findViewById(R.id.SignUp);
@@ -44,7 +50,9 @@ public class LogIn extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LogIn.this, password.getText(), Toast.LENGTH_SHORT).show();
+                if(!email.getText().equals("") && !password.getText().equals("")){
+                    registerUser(email.getText().toString(),password.getText().toString());
+                }
             }
         });
 
@@ -52,6 +60,18 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(LogIn.this, "OTP is sent to your mail!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void registerUser(String Email,String Pswd){
+        mAuth.createUserWithEmailAndPassword(Email,Pswd).addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                Toast.makeText(getApplicationContext(), "You have successfully registered!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this,Landing.class));
+                finish();
+            }else{
+                Toast.makeText(this, "Registration Unsuccessful!! Try Again Later!", Toast.LENGTH_SHORT).show();
             }
         });
     }
