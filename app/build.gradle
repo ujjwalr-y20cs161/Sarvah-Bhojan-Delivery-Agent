@@ -1,14 +1,15 @@
 plugins {
     id 'com.android.application'
+    id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.sarvah_bhojan_delivery_agent"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
