@@ -2,5 +2,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name = "DynamicThemes" parent="Theme.Material3.DynamicColors.DayNight">
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="fontFamily">@font/roboto</item>
     </style>
 </resources>

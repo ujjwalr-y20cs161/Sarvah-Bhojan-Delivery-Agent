@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.TextView;
 
 
 public class SplashScreen extends AppCompatActivity {
-    TextView Message;
+    private TextView Message;
+    private static final  int SPLASH_DELAY = 3000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,10 +20,17 @@ public class SplashScreen extends AppCompatActivity {
         this.getSupportActionBar().hide();
         Message = (TextView) findViewById(R.id.app_title);
         Message.setText("Welcome to "+getText(R.string.app_name));
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Start the next activity
+                Intent intent = new Intent(getApplicationContext(), LogIn.class);
+                startActivity(intent);
 
-        startActivity( new Intent(getApplicationContext(),LogIn.class));
-        finish();
-
+                // Finish the splash activity
+                finish();
+            }
+        }, SPLASH_DELAY);
     }
 
 }
