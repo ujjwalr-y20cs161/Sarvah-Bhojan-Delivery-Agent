@@ -53,7 +53,7 @@ public class LogIn extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!email.getText().equals("") && !password.getText().equals("")){
+                if((!email.getText().equals("")) && (!password.getText().equals(""))){
                     registerUser(email.getText().toString(),password.getText().toString());
                 }else{
                     Toast.makeText(LogIn.this, "Enter Valid Credentials", Toast.LENGTH_SHORT).show();

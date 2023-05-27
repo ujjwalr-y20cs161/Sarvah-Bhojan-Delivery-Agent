@@ -13,19 +13,19 @@ public class Landing extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
-        FirebaseUser user = (FirebaseUser) getIntent().getExtras().getParcelable("user");
-        try{
-            if(user!=null) {
-                Toast.makeText(this, user.getEmail(), Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(this, "UserNull", Toast.LENGTH_SHORT).show();
-            }
-        }
-        catch (Exception e){
-            Toast.makeText(this, "Floppy", Toast.LENGTH_SHORT).show();
-        }
-        
-
-        
+//        FirebaseUser user = (FirebaseUser) getIntent().getExtras().getParcelable("user");
+//        try{
+//            if(user!=null) {
+//                Toast.makeText(this, user.getEmail(), Toast.LENGTH_SHORT).show();
+//            }else{
+//                Toast.makeText(this, "UserNull", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//        catch (Exception e){
+//            Toast.makeText(this, "Floppy", Toast.LENGTH_SHORT).show();
+//        }
+//
+//
+//
     }
 }
