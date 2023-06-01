@@ -1,5 +1,6 @@
 package com.example.sarvah_bhojan_delivery_agent;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -26,13 +27,22 @@ public class LogIn extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+
         DynamicColors.applyToActivityIfAvailable(this);
+        ActionBar actionBar = getSupportActionBar();
+// Hide the action bar title and show only the app icon
+        if (actionBar != null) {
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setTitle(getLocalClassName());
+            actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
+            actionBar.setIcon(R.mipmap.ic_launcher);
+        }
 
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
 
 
-        signIn = (Button) findViewById(R.id.SignIn);
+        signIn = (Button) findViewById(R.id.sign_in);
         signUp = (Button) findViewById(R.id.SignUp);
         forgotPassword = (Button) findViewById(R.id.pswdfrgt);
 
@@ -53,11 +63,8 @@ public class LogIn extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if((!email.getText().equals("")) && (!password.getText().equals(""))){
-                    registerUser(email.getText().toString(),password.getText().toString());
-                }else{
-                    Toast.makeText(LogIn.this, "Enter Valid Credentials", Toast.LENGTH_SHORT).show();
-                }
+                Intent intent = new Intent(getApplicationContext(),SignUp.class);
+                startActivity(intent);
             }
         });
 

@@ -35,6 +35,7 @@
         <com.google.android.material.textfield.TextInputEditText
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/emailfield"
+            android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -61,7 +62,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/SignIn"
+        android:id="@+id/sign_in"
         style="@style/Widget.Material3.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,6 +70,8 @@
         android:layout_marginEnd="48dp"
         android:text="Sign In"
         android:textSize="14sp"
+        app:icon="@drawable/ic_baseline_done_outline_24"
+        app:iconGravity="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
 
@@ -80,8 +83,9 @@
         android:layout_marginEnd="16dp"
         android:text="Sign Up"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/SignIn"
-        app:layout_constraintTop_toTopOf="@+id/SignIn" />
+        app:icon="@drawable/ic_baseline_person_add_24"
+        app:layout_constraintEnd_toStartOf="@+id/sign_in"
+        app:layout_constraintTop_toTopOf="@+id/sign_in" />
 
     <TextView
         android:id="@+id/loginHelp"
