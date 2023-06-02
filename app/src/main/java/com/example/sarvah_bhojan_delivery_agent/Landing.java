@@ -49,8 +49,11 @@ public class Landing extends AppCompatActivity {
 //
 //
 //
+
+        String name =  "Hello";
         // URL of the server
         ResponseText = (TextInputEditText) findViewById(R.id.ResponseText);
+        ResponseText.setText(name);
     }
 
 }

@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.color.DynamicColors;
@@ -16,10 +18,14 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.regex.Pattern;
+
 public class LogIn extends AppCompatActivity {
 
     private Button signIn,signUp,forgotPassword;
     private TextInputEditText email,password;
+    private TextView LoginText;
+    private String loginText;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,10 @@ public class LogIn extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
             actionBar.setIcon(R.mipmap.ic_launcher);
         }
+        loginText ="Welcome to \n"+getString(R.string.app_name);
+        LoginText = findViewById(R.id.Logintext);
+        LoginText.setText(loginText);
+
 
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
@@ -52,10 +62,17 @@ public class LogIn extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!email.getText().equals("") && !password.getText().equals("")){
+                if(!email.getText().toString().isEmpty() && !password.getText().toString().isEmpty()){
                     loginUser(email.getText().toString(),password.getText().toString());
                 }else{
-                    Toast.makeText(LogIn.this, "Enter Valid Credentials", Toast.LENGTH_SHORT).show();
+                    if(email.getText().toString().isEmpty()) {
+                        email.setError("Email Id is required");
+                        email.requestFocus();
+                    }
+                    if(password.getText().toString().isEmpty()){
+                        password.setError(("Password is required"));
+                        password.requestFocus();
+                    }
                 }
             }
         });
@@ -71,29 +88,16 @@ public class LogIn extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!email.getText().equals("")){
+                if(Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()){
                     resetPassword(email.getText().toString());
                 }else{
-                    Toast.makeText(LogIn.this, "Enter Valid Credentials", Toast.LENGTH_SHORT).show();
+                    email.setError("Enter Valid Credentials");
                 }
             }
         });
     }
 
-    public void registerUser(String Email,String Pswd){
-        mAuth.createUserWithEmailAndPassword(Email,Pswd).addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
-                FirebaseUser user = mAuth.getCurrentUser();
-                Toast.makeText(getApplicationContext(), "You have successfully registered!"+user.getEmail(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this,Landing.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
-                finish();
-            }else{
-                Toast.makeText(this, "Registration Unsuccessful, Try Again Later!", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+
 
     public  void loginUser(String Email,String Pswd){
         mAuth.signInWithEmailAndPassword(Email,Pswd).addOnCompleteListener((task -> {
