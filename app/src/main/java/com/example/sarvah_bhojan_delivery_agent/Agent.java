@@ -8,15 +8,39 @@ import androidx.annotation.NonNull;
 public class Agent implements Parcelable {
     public String firstName,lastName,gender;
     private String emailId,password;
+    private final long uid;
     public int age;
+    private static long uidGen = 1000;
 
-    public Agent(String firstName, String lastName, String gender, String emailId, String password, int age) {
+    public Agent(String firstName , String lastName, String gender, String emailId, String password, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.emailId = emailId;
         this.password = password;
         this.age = age;
+        this.uid = generateUID();
+    }
+
+    public long getUid() {
+        return uid;
+    }
+
+    public Agent(String emailId, String password) {
+        this.firstName="FirstName";
+        this.lastName="LastName";
+        this.age=0;
+        this.gender ="default";
+        this.emailId = emailId;
+        this.password = password;
+        this.uid = generateUID();
+    }
+
+    public Agent(String firstName, String emailId, String password) {
+        this.firstName = firstName;
+        this.emailId = emailId;
+        this.password = password;
+        this.uid = generateUID();
     }
 
     public Agent(Agent agentIns) {
@@ -26,6 +50,7 @@ public class Agent implements Parcelable {
         this.gender = agentIns.gender;
         this.emailId= agentIns.getEmailId();
         this.password = agentIns.getPassword();
+        this.uid = agentIns.getUid();
     }
 
     protected Agent(Parcel in) {
@@ -35,6 +60,12 @@ public class Agent implements Parcelable {
         emailId = in.readString();
         password = in.readString();
         age = in.readInt();
+       uid = in.readLong();
+    }
+
+    private static long generateUID(){
+        uidGen = uidGen+1;
+        return uidGen;
     }
 
     public static final Creator<Agent> CREATOR = new Creator<Agent>() {

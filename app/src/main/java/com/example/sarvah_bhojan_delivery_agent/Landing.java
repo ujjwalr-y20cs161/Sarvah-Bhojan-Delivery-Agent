@@ -50,10 +50,16 @@ public class Landing extends AppCompatActivity {
 //
 //
 
-        String name =  "Hello";
+        Agent myAgent = MyApp.getMyAgent();
+        if(myAgent!=null){
+            Toast.makeText(this, myAgent.getFirstName(), Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "Fuxxed Up", Toast.LENGTH_SHORT).show();
+        }
         // URL of the server
         ResponseText = (TextInputEditText) findViewById(R.id.ResponseText);
-        ResponseText.setText(name);
+        ResponseText.setText("Agent");
     }
 
 }
