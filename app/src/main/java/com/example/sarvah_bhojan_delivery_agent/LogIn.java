@@ -27,13 +27,13 @@ public class LogIn extends AppCompatActivity {
     private TextView LoginText;
     private String loginText;
     private FirebaseAuth mAuth;
+    public  MyApp myapp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-
         DynamicColors.applyToActivityIfAvailable(this);
         ActionBar actionBar = getSupportActionBar();
 // Hide the action bar title and show only the app icon
@@ -43,6 +43,9 @@ public class LogIn extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
             actionBar.setIcon(R.mipmap.ic_launcher);
         }
+
+        myapp=(MyApp)getApplicationContext();
+
         loginText ="Welcome to \n"+getString(R.string.app_name);
         LoginText = findViewById(R.id.Logintext);
         LoginText.setText(loginText);
@@ -102,12 +105,13 @@ public class LogIn extends AppCompatActivity {
     public  void loginUser(String Email,String Pswd){
         mAuth.signInWithEmailAndPassword(Email,Pswd).addOnCompleteListener((task -> {
             if(task.isSuccessful()){
-                MyApp.setMyAgent(new Agent(Email,Pswd));
-                Toast.makeText(this, MyApp.getMyAgent().getEmailId(), Toast.LENGTH_SHORT).show();
+                myapp.setMyAgent(new Agent(Email,Pswd));
+                Agent myagent = myapp.getMyAgent();
+                Toast.makeText(this,myagent.getEmailId(), Toast.LENGTH_SHORT).show();
                 FirebaseUser user = mAuth.getCurrentUser();
-                Toast.makeText(this, "Welcome Back! "+user.getEmail(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Welcome Back! "+user.getEmail(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this,Landing.class);
-                intent.putExtra("user",user);
+//                intent.putExtra("user",user);
                 startActivity(intent);
                 finish();
             }else{

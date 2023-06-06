@@ -21,6 +21,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class Landing extends AppCompatActivity {
     private TextInputEditText ResponseText;
     public String urlString = "https://sbdaapi.free.beeceptor.com/demo";
+    public MyApp myapp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,9 @@ public class Landing extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
             actionBar.setIcon(R.mipmap.ic_launcher);
         }
+
+        myapp = (MyApp)getApplicationContext();
+
 //        FirebaseUser user = (FirebaseUser) getIntent().getExtras().getParcelable("user");
 //        try{
 //            if(user!=null) {
@@ -50,7 +54,7 @@ public class Landing extends AppCompatActivity {
 //
 //
 
-        Agent myAgent = MyApp.getMyAgent();
+        Agent myAgent = myapp.getMyAgent();
         if(myAgent!=null){
             Toast.makeText(this, myAgent.getFirstName(), Toast.LENGTH_SHORT).show();
         }
@@ -59,7 +63,7 @@ public class Landing extends AppCompatActivity {
         }
         // URL of the server
         ResponseText = (TextInputEditText) findViewById(R.id.ResponseText);
-        ResponseText.setText("Agent");
+        ResponseText.setText(myAgent.getPassword());
     }
 
 }

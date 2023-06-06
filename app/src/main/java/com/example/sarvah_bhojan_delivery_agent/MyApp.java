@@ -3,7 +3,7 @@ package com.example.sarvah_bhojan_delivery_agent;
 import android.app.Application;
 
 public class MyApp extends Application {
-    private static Agent myAgent;
+    private Agent myAgent;
 
     @Override
     public void onCreate() {
@@ -11,11 +11,11 @@ public class MyApp extends Application {
         // Initialize your object here
     }
 
-    public static void setMyAgent(Agent agentInstance){
-        myAgent = new Agent(myAgent);
+    public void setMyAgent(Agent agentInstance){
+        this.myAgent = new Agent(agentInstance);
     }
 
-    public static Agent getMyAgent() {
+    public Agent getMyAgent() {
         return myAgent;
     }
 }
