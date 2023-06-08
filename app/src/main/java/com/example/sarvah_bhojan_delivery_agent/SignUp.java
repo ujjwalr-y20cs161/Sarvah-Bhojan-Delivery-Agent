@@ -164,7 +164,7 @@ public class SignUp extends AppCompatActivity {
                 UserSession.getInstance().setUser(agent);
 
 //              Toggle SharedReference and Store AgentEmailId
-                SharedPreferences sharedPreferences = getSharedPreferences("user-session", Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences = getSharedPreferences("user_session", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("LoggedIn",true);
                 editor.putString("AgentID",agent.getUid());

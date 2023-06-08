@@ -53,6 +53,10 @@ public class Agent  {
         this.uid = agentIns.getUid();
     }
 
+    public Agent(){
+
+    }
+
 
     private static String generateUID(){
         uidGen = uidGen+1;

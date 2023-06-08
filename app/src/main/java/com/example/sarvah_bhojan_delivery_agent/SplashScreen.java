@@ -3,11 +3,21 @@ package com.example.sarvah_bhojan_delivery_agent;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class SplashScreen extends AppCompatActivity {
@@ -20,30 +30,52 @@ public class SplashScreen extends AppCompatActivity {
         this.getSupportActionBar().hide();
         Message = (TextView) findViewById(R.id.app_title);
         Message.setText("Welcome to "+getText(R.string.app_name));
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Start the next activity
-                Agent user = UserSession.getInstance().getUser();
-                if (user == null) {
-                    // User is not logged in, perform necessary actions
 
-                    Intent intent = new Intent(getApplicationContext(), LogIn.class);
-                    startActivity(intent);
+//        Checks SharedPreference if LoggedIn or not
 
-                    // Finish the splash activity
-                    finish();
-                } else {
-                    // User is logged in, handle accordingly
+        SharedPreferences sharedPref = getSharedPreferences("user_session", Context.MODE_PRIVATE);
 
-                    Intent intent = new Intent(getApplicationContext(), Landing.class);
-                    startActivity(intent);
+        boolean isLoggedIn = sharedPref.getBoolean("LoggedIn", false);
+        String agentId = sharedPref.getString("AgentID"," ");
+        if(isLoggedIn){
 
-                    // Finish the splash activity
-                    finish();
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference agentsRef = database.getReference("agents");
+            DatabaseReference agentRef = agentsRef.push();
+            agentsRef.orderByChild("uid").equalTo(agentId).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot agentSnapshot : dataSnapshot.getChildren()) {
+//                        Get agent object from RTDB
+                        Agent agent = agentSnapshot.getValue(Agent.class);
+                        Log.e("Agent",agent.getEmailId());
+                        // Set as the current instance
+                        UserSession.getInstance().setUser(agent);
+                        Log.d("UserSession","Instance Has been set");
+//                        move to landing page
+                        startActivity(new Intent(getApplicationContext(),Landing.class));
+                        finish();
+                    }
                 }
-            }
-        }, SPLASH_DELAY);
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Handle the error
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putBoolean("LoggedIn",false);
+                    editor.putString("AgentID","");
+                    editor.apply();
+                    Log.e("SharedPreference","Corrupted Login");
+                    Toast.makeText(SplashScreen.this, "Invalid State, Reopen the App", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+        else{
+            startActivity(new Intent(this, LogIn.class));
+            finish();
+        }
+
     }
 
 }

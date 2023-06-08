@@ -3,8 +3,11 @@ package com.example.sarvah_bhojan_delivery_agent;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +20,11 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.regex.Pattern;
 
@@ -106,12 +114,39 @@ public class LogIn extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(Email,Pswd).addOnCompleteListener((task -> {
             if(task.isSuccessful()){
 //               Create an Agent with following Email and Password
+                FirebaseUser user = mAuth.getCurrentUser();
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference agentsRef = database.getReference("agents");
+                DatabaseReference agentRef = agentsRef.push();
+                agentsRef.orderByChild("uid").equalTo(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot agentSnapshot : dataSnapshot.getChildren()) {
+//                        Get agent object from RTDB
+                            Agent agent = agentSnapshot.getValue(Agent.class);
+                            Log.e("Agent",agent.getEmailId());
+                            // Set as the current instance
+                            UserSession.getInstance().setUser(agent);
+                            Log.d("UserSession","Instance Has been set");
 
+//                          Change Shared Preferences
+                            SharedPreferences sharedPref = getSharedPreferences("user_session", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putBoolean("LoggedIn",true);
+                            editor.putString("AgentID",user.getUid());
+                            editor.apply();
+//                        move to landing page
+                            startActivity(new Intent(getApplicationContext(),Landing.class));
+                            finish();
+                        }
+                    }
 
-                Intent intent = new Intent(this,Landing.class);
-                startActivity(intent);
-                finish();
-
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Handle the error
+                        Toast.makeText(myapp, "Failed, Close App", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }else{
                 Toast.makeText(this, "Login Unsuccessful, Try Again!", Toast.LENGTH_SHORT).show();

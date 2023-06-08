@@ -3,6 +3,9 @@ package com.example.sarvah_bhojan_delivery_agent;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,27 +43,38 @@ public class Landing extends AppCompatActivity {
             actionBar.setIcon(R.mipmap.ic_launcher);
         }
 
-        myapp = (MyApp)getApplicationContext();
         logout = (Button) findViewById(R.id.logout);
 
 
         Agent myAgent = UserSession.getInstance().getUser();
         if(myAgent!=null){
             Toast.makeText(this, myAgent.getFirstName(), Toast.LENGTH_SHORT).show();
+            ResponseText = (TextInputEditText) findViewById(R.id.ResponseText);
+            ResponseText.setText(myAgent.firstName+" "+myAgent.gender);
         }
         else{
             Toast.makeText(this, "Fuxxed Up", Toast.LENGTH_SHORT).show();
+            SharedPreferences sharedPref = getSharedPreferences("user_session", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean("LoggedIn",false);
+            editor.putString("AgentID","");
+            editor.apply();
         }
-        // URL of the server
-        ResponseText = (TextInputEditText) findViewById(R.id.ResponseText);
-        ResponseText.setText(myAgent.getPassword());
+
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Logged Out Successfully", Toast.LENGTH_SHORT).show();
                 UserSession.getInstance().clearSession();
-                Toast.makeText(myapp, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
-                finishAndRemoveTask();
+                SharedPreferences sharedPref = getSharedPreferences("user_session", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.remove("LoggedIn");
+                editor.remove("AgentID");
+                editor.apply();
+                startActivity(new Intent(getApplicationContext(), LogIn.class));
+                finish();
             }
         });
     }
