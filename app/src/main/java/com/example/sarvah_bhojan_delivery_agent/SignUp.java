@@ -32,7 +32,7 @@ public class SignUp extends AppCompatActivity {
     private Button signInButton;
     private Agent agent;
     private FirebaseAuth mAuth;
-
+    public String ScreenTitle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +42,11 @@ public class SignUp extends AppCompatActivity {
 
         DynamicColors.applyToActivityIfAvailable(this);
         ActionBar actionBar = getSupportActionBar();
+        ScreenTitle = "Sign Up Page";
 // Hide the action bar title and show only the app icon
         if (actionBar != null) {
             actionBar.setDisplayShowTitleEnabled(true);
-            actionBar.setTitle(getLocalClassName());
+            actionBar.setTitle(this.ScreenTitle);
             actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
             actionBar.setIcon(R.mipmap.ic_launcher);
         }

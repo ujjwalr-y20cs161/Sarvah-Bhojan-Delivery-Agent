@@ -1,17 +1,21 @@
-Last commit : cba9916 (HEAD -> master, origin/master) Added UserSession, Logout Button
+$ Last commit : cba9916 (HEAD -> master, origin/master) Added UserSession, Logout Button
 
 * FireBase Authentication
 ~#1 Add UserName as the DisplayName.
 ~#2 Get the UID and store it in Agent Object as an attribute.
-#3 Store the Agent in FireBase RT DB{
+~#3 Store the Agent in FireBase RT DB{
     >Create FireBase Realtime DB.
     >Store Agent Object as it gets Registered.
     }
 
 
 * Session Persistence, Agent data
-#1 Fetch Agent Object from Firebase RTDB.
-#2 Store UID of Agent Object in Shared Preference
+~#1 Fetch Agent Object from Firebase RTDB.
+~#2 Store UID of Agent Object in Shared Preference
+
+
+$ ad41ad0 (HEAD -> master, origin/master) Added Correct Logic for User Session management,Added Logic for Logout,SignIn,SplashScreen,LogIn
+
 
 * Agent Location and Map View
 #1 . Add Permission to obtain Agent Location.

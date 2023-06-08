@@ -26,6 +26,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class Landing extends AppCompatActivity {
     private TextInputEditText ResponseText;
     public MyApp myapp;
+    public String ScreenTitle = "Home";
     private Button logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class Landing extends AppCompatActivity {
 // Hide the action bar title and show only the app icon
         if (actionBar != null) {
             actionBar.setDisplayShowTitleEnabled(true);
-            actionBar.setTitle(getLocalClassName());
+            actionBar.setTitle(this.ScreenTitle);
             actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
             actionBar.setIcon(R.mipmap.ic_launcher);
         }

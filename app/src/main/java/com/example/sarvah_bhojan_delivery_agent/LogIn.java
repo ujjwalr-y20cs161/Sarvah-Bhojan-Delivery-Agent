@@ -33,7 +33,7 @@ public class LogIn extends AppCompatActivity {
     private Button signIn,signUp,forgotPassword;
     private TextInputEditText email,password;
     private TextView LoginText;
-    private String loginText;
+    private String loginText,ScreenTitle;
     private FirebaseAuth mAuth;
     public  MyApp myapp;
     @Override
@@ -44,10 +44,11 @@ public class LogIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
         DynamicColors.applyToActivityIfAvailable(this);
         ActionBar actionBar = getSupportActionBar();
+        ScreenTitle = "Log In Page";
 // Hide the action bar title and show only the app icon
         if (actionBar != null) {
             actionBar.setDisplayShowTitleEnabled(true);
-            actionBar.setTitle(getLocalClassName());
+            actionBar.setTitle(this.ScreenTitle);
             actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
             actionBar.setIcon(R.mipmap.ic_launcher);
         }
