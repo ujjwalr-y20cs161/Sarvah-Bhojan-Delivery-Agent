@@ -24,11 +24,24 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 // Start the next activity
-                Intent intent = new Intent(getApplicationContext(), LogIn.class);
-                startActivity(intent);
+                Agent user = UserSession.getInstance().getUser();
+                if (user == null) {
+                    // User is not logged in, perform necessary actions
 
-                // Finish the splash activity
-                finish();
+                    Intent intent = new Intent(getApplicationContext(), LogIn.class);
+                    startActivity(intent);
+
+                    // Finish the splash activity
+                    finish();
+                } else {
+                    // User is logged in, handle accordingly
+
+                    Intent intent = new Intent(getApplicationContext(), Landing.class);
+                    startActivity(intent);
+
+                    // Finish the splash activity
+                    finish();
+                }
             }
         }, SPLASH_DELAY);
     }

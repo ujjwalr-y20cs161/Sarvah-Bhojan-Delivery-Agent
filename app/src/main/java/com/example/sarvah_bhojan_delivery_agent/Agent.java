@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 public class Agent  {
     public String firstName,lastName,gender;
     private String emailId,password;
-    private final long uid;
+    private String uid;
     public int age;
     private static long uidGen = 1000;
 
@@ -22,7 +22,7 @@ public class Agent  {
         this.uid = generateUID();
     }
 
-    public long getUid() {
+    public String getUid() {
         return uid;
     }
 
@@ -54,10 +54,15 @@ public class Agent  {
     }
 
 
-    private static long generateUID(){
+    private static String generateUID(){
         uidGen = uidGen+1;
-        return uidGen;
+        return Long.toString(uidGen);
     }
+
+    public void setUid(String FireBaseID){
+        this.uid = FireBaseID;
+    }
+
 
 
     public String getFirstName() {

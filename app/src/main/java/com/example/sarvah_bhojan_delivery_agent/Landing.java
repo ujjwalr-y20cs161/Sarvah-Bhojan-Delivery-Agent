@@ -22,7 +22,6 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class Landing extends AppCompatActivity {
     private TextInputEditText ResponseText;
-    public String urlString = "https://sbdaapi.free.beeceptor.com/demo";
     public MyApp myapp;
     private Button logout;
     @Override
@@ -32,6 +31,7 @@ public class Landing extends AppCompatActivity {
 
         DynamicColors.applyToActivityIfAvailable(this);
         ActionBar actionBar = getSupportActionBar();
+
 // Hide the action bar title and show only the app icon
         if (actionBar != null) {
             actionBar.setDisplayShowTitleEnabled(true);
@@ -42,22 +42,9 @@ public class Landing extends AppCompatActivity {
 
         myapp = (MyApp)getApplicationContext();
         logout = (Button) findViewById(R.id.logout);
-//        FirebaseUser user = (FirebaseUser) getIntent().getExtras().getParcelable("user");
-//        try{
-//            if(user!=null) {
-//                Toast.makeText(this, user.getEmail(), Toast.LENGTH_SHORT).show();
-//            }else{
-//                Toast.makeText(this, "UserNull", Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//        catch (Exception e){
-//            Toast.makeText(this, "Floppy", Toast.LENGTH_SHORT).show();
-//        }
-//
-//
-//
 
-        Agent myAgent = myapp.getMyAgent();
+
+        Agent myAgent = UserSession.getInstance().getUser();
         if(myAgent!=null){
             Toast.makeText(this, myAgent.getFirstName(), Toast.LENGTH_SHORT).show();
         }
