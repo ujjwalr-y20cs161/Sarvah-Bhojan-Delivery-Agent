@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-public class Agent implements Parcelable {
+public class Agent  {
     public String firstName,lastName,gender;
     private String emailId,password;
     private final long uid;
@@ -53,32 +53,12 @@ public class Agent implements Parcelable {
         this.uid = agentIns.getUid();
     }
 
-    protected Agent(Parcel in) {
-        firstName = in.readString();
-        lastName = in.readString();
-        gender = in.readString();
-        emailId = in.readString();
-        password = in.readString();
-        age = in.readInt();
-       uid = in.readLong();
-    }
 
     private static long generateUID(){
         uidGen = uidGen+1;
         return uidGen;
     }
 
-    public static final Creator<Agent> CREATOR = new Creator<Agent>() {
-        @Override
-        public Agent createFromParcel(Parcel in) {
-            return new Agent(in);
-        }
-
-        @Override
-        public Agent[] newArray(int size) {
-            return new Agent[size];
-        }
-    };
 
     public String getFirstName() {
         return firstName;
@@ -104,18 +84,5 @@ public class Agent implements Parcelable {
         this.password = password;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(@NonNull Parcel parcel, int i) {
-        parcel.writeString(firstName);
-        parcel.writeString(lastName);
-        parcel.writeString(gender);
-        parcel.writeString(emailId);
-        parcel.writeString(password);
-        parcel.writeInt(age);
-    }
 }

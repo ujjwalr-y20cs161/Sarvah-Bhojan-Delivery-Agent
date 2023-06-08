@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.color.DynamicColors;
@@ -22,6 +24,7 @@ public class Landing extends AppCompatActivity {
     private TextInputEditText ResponseText;
     public String urlString = "https://sbdaapi.free.beeceptor.com/demo";
     public MyApp myapp;
+    private Button logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +41,7 @@ public class Landing extends AppCompatActivity {
         }
 
         myapp = (MyApp)getApplicationContext();
-
+        logout = (Button) findViewById(R.id.logout);
 //        FirebaseUser user = (FirebaseUser) getIntent().getExtras().getParcelable("user");
 //        try{
 //            if(user!=null) {
@@ -64,6 +67,15 @@ public class Landing extends AppCompatActivity {
         // URL of the server
         ResponseText = (TextInputEditText) findViewById(R.id.ResponseText);
         ResponseText.setText(myAgent.getPassword());
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UserSession.getInstance().clearSession();
+                Toast.makeText(myapp, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
+                finishAndRemoveTask();
+            }
+        });
     }
 
 }
