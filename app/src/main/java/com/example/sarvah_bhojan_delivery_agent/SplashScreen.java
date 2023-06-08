@@ -61,12 +61,13 @@ public class SplashScreen extends AppCompatActivity {
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     // Handle the error
+                    Toast.makeText(getApplicationContext(), "Invalid State, Reopen the App", Toast.LENGTH_SHORT).show();
                     SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putBoolean("LoggedIn",false);
-                    editor.putString("AgentID","");
+                    editor.remove("LoggedIn");
+                    editor.remove("AgentID");
                     editor.apply();
                     Log.e("SharedPreference","Corrupted Login");
-                    Toast.makeText(SplashScreen.this, "Invalid State, Reopen the App", Toast.LENGTH_SHORT).show();
+
                 }
             });
 
