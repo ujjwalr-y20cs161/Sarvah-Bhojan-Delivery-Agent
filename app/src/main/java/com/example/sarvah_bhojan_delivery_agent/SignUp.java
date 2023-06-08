@@ -3,9 +3,11 @@ package com.example.sarvah_bhojan_delivery_agent;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
+
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -19,8 +21,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.Serializable;
 
 public class SignUp extends AppCompatActivity {
 
@@ -136,17 +139,38 @@ public class SignUp extends AppCompatActivity {
 
 
                 // All fields are valid, continue with your login logic here
-                registerUser(agent.getEmailId(),agent.getPassword());
+                registerUser(agent);
                 // For example, you can call a method to authenticate the user with Firebase Authentication
 
             }
         });
     }
 
-    public void registerUser(String Email,String Pswd){
-        mAuth.createUserWithEmailAndPassword(Email,Pswd).addOnCompleteListener(task -> {
+    public void registerUser(Agent agent){
+        mAuth.createUserWithEmailAndPassword(agent.getEmailId(),agent.getPassword()).addOnCompleteListener(task -> {
             if(task.isSuccessful()){
+
+//              Add uid to agentObject
                 FirebaseUser user = mAuth.getCurrentUser();
+                agent.setUid(user.getUid());
+
+//              Store in Firebase Realtime Database
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference agentsRef = database.getReference("agents");
+                DatabaseReference agentRef = agentsRef.push();
+                agentRef.setValue(agent);
+
+//              Keep in UserSession Instance
+                UserSession.getInstance().setUser(agent);
+
+//              Toggle SharedReference and Store AgentEmailId
+                SharedPreferences sharedPreferences = getSharedPreferences("user-session", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("LoggedIn",true);
+                editor.putString("AgentID",agent.getUid());
+                editor.apply();
+
+//              Intents and Toasts
                 Toast.makeText(getApplicationContext(), "You have successfully registered!"+user.getEmail(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), Landing.class);
                 startActivity(intent);

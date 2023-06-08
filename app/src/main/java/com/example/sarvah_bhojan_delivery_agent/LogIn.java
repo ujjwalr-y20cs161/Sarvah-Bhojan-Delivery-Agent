@@ -105,15 +105,14 @@ public class LogIn extends AppCompatActivity {
     public  void loginUser(String Email,String Pswd){
         mAuth.signInWithEmailAndPassword(Email,Pswd).addOnCompleteListener((task -> {
             if(task.isSuccessful()){
-                UserSession.getInstance().setUser(new Agent(Email,Pswd));
-                Agent myagent = UserSession.getInstance().getUser();
-                Toast.makeText(this,myagent.getEmailId(), Toast.LENGTH_SHORT).show();
-                FirebaseUser user = mAuth.getCurrentUser();
-//                Toast.makeText(this, "Welcome Back! "+user.getEmail(), Toast.LENGTH_SHORT).show();
+//               Create an Agent with following Email and Password
+
+
                 Intent intent = new Intent(this,Landing.class);
-//                intent.putExtra("user",user);
                 startActivity(intent);
                 finish();
+
+
             }else{
                 Toast.makeText(this, "Login Unsuccessful, Try Again!", Toast.LENGTH_SHORT).show();
             }
