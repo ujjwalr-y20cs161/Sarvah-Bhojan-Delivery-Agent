@@ -2,32 +2,36 @@ package com.example.sarvah_bhojan_delivery_agent;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
+import android.Manifest;
+
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.color.DynamicColors;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-import java.net.URL;
-import java.util.Scanner;
-
-import javax.net.ssl.HttpsURLConnection;
+import java.util.Calendar;
 
 public class Landing extends AppCompatActivity {
-    private TextInputEditText ResponseText;
+    private TextView textGreeting;
+    private TextView textName;
+    private TextView textEmail;
+
     public MyApp myapp;
     public String ScreenTitle = "Home";
-    private Button logout;
+    private Button logout,active;
+    private static final int REQUEST_LOCATION_PERMISSION = 1001;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,13 +49,19 @@ public class Landing extends AppCompatActivity {
         }
 
         logout = (Button) findViewById(R.id.logout);
+        active = (Button)findViewById(R.id.active);
+        // Reference the TextViews
+        textGreeting = findViewById(R.id.text_greeting);
+        textName = findViewById(R.id.text_name);
+        textEmail = findViewById(R.id.text_email);
 
 
         Agent myAgent = UserSession.getInstance().getUser();
-        if(myAgent!=null){
+        if(myAgent!=null) {
+            textGreeting.setText(getGreeting()+" "+MyApp.toTitleCase(myAgent.getFirstName())+"!");
             Toast.makeText(this, myAgent.getFirstName(), Toast.LENGTH_SHORT).show();
-            ResponseText = (TextInputEditText) findViewById(R.id.ResponseText);
-            ResponseText.setText(myAgent.firstName+" "+myAgent.gender);
+            textEmail.setText("Email : "+myAgent.getEmailId());
+            textName.setText("Name : "+MyApp.toTitleCase(myAgent.getFirstName()+" "+myAgent.lastName));
         }
         else{
             Toast.makeText(this, "Fuxxed Up", Toast.LENGTH_SHORT).show();
@@ -62,7 +72,14 @@ public class Landing extends AppCompatActivity {
             editor.apply();
         }
 
-
+        // Check if the location permission is granted
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            // Permission is already granted, proceed with location access
+            // ...
+        } else {
+            // Permission is not granted, request it
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
+        }
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +95,28 @@ public class Landing extends AppCompatActivity {
                 finish();
             }
         });
+
+        active.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ActiveMap.class));
+            }
+        }));
+    }
+
+    public String getGreeting() {
+        Calendar calendar = Calendar.getInstance();
+        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+
+        if (hourOfDay >= 5 && hourOfDay < 12) {
+            return "Good morning 🌅\n";
+        } else if (hourOfDay >= 12 && hourOfDay < 17) {
+            return "Good afternoon ☀️\n";
+        } else if (hourOfDay >= 17 && hourOfDay < 19) {
+            return "Good evening 🌇\n";
+        } else {
+            return "Good night 🌃\n";
+        }
     }
 
 }
