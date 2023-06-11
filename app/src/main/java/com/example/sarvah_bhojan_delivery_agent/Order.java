@@ -11,7 +11,7 @@ public class Order {
         this.id = id;
         this.customerName = customerName;
         this.customerId = CustomerId;
-        this.status = "Pending";
+        this.status = "Order Created!";
         this.dropDown = dropDown;
         this.pickUp = pickUp;
         this.pickAddressLocate = pickAddress;
