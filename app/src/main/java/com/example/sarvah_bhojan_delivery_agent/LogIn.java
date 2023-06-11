@@ -75,7 +75,12 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!email.getText().toString().isEmpty() && !password.getText().toString().isEmpty()){
+                    signIn.setEnabled(false);
+                    signUp.setEnabled(false);
+                    forgotPassword.setEnabled(false);
                     loginUser(email.getText().toString(),password.getText().toString());
+//                    While processing Disable button
+
                 }else{
                     if(email.getText().toString().isEmpty()) {
                         email.setError("Email Id is required");
@@ -92,6 +97,11 @@ public class LogIn extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                Disable buttons while processing
+                signUp.setEnabled(false);
+                signIn.setEnabled(false);
+                forgotPassword.setEnabled(false);
+//                Intent call
                 Intent intent = new Intent(getApplicationContext(),SignUp.class);
                 startActivity(intent);
             }

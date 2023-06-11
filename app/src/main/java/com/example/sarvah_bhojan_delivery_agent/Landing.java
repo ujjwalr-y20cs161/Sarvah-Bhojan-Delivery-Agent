@@ -37,7 +37,7 @@ public class Landing extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
-
+        //Dynamic Colors to applied on the screen
         DynamicColors.applyToActivityIfAvailable(this);
         ActionBar actionBar = getSupportActionBar();
 
@@ -56,17 +56,17 @@ public class Landing extends AppCompatActivity {
         textName = findViewById(R.id.text_name);
         textEmail = findViewById(R.id.text_email);
 
-
+//      Retrieving SavedInstance of User
         Agent myAgent = UserSession.getInstance().getUser();
         if(myAgent!=null) {
+//           Populating UI with Agent Info
             textGreeting.setText(getGreeting()+" "+MyApp.toTitleCase(myAgent.getFirstName())+"!");
-            Toast.makeText(this, myAgent.getFirstName(), Toast.LENGTH_SHORT).show();
             textEmail.setText("Email : "+myAgent.getEmailId());
             textName.setText("Name : "+MyApp.toTitleCase(myAgent.getFirstName()+" "+myAgent.lastName));
         }
         else{
 //            if any error, this will clean the shared preferences and reset the session.
-            Toast.makeText(this, "Fuxxed Up", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error Encountered!\nPlease Logout and Login Again.", Toast.LENGTH_SHORT).show();
             SharedPreferences sharedPref = getSharedPreferences("user_session", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putBoolean("LoggedIn",false);
@@ -83,6 +83,7 @@ public class Landing extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
         }
 
+//        Logout ClickListener
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,13 +130,17 @@ public class Landing extends AppCompatActivity {
         builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
             // When the user click yes button then app will close
             Toast.makeText(getApplicationContext(), "Logged Out Successfully", Toast.LENGTH_SHORT).show();
+//           Clear the saved agent Info
             UserSession.getInstance().clearSession();
+//            Clear the sharedPreferences
             SharedPreferences sharedPref = getSharedPreferences("user_session", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.remove("LoggedIn");
             editor.remove("AgentID");
             editor.apply();
+//            Redirect to Login screen
             startActivity(new Intent(getApplicationContext(), LogIn.class));
+//            Remove current Screen from history stack
             finish();
         });
         builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {

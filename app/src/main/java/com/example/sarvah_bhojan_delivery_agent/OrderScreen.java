@@ -13,6 +13,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
@@ -26,9 +27,7 @@ import java.util.List;
 
 public class OrderScreen extends AppCompatActivity {
 
-    private String ScreenTitle = "Map Screen";
-    private int noBacktaps = 0;
-
+    private String ScreenTitle = "Order Manager";
     private RecyclerView recyclerView;
     private OrderAdapter adapter;
     private List<Order> data;
@@ -37,7 +36,7 @@ public class OrderScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
-
+//        Dynamic Colors apply
         DynamicColors.applyToActivityIfAvailable(this);
         ActionBar actionBar = getSupportActionBar();
 
@@ -64,6 +63,7 @@ public class OrderScreen extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+//        Deactive state ClickListeners
         deactive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +78,12 @@ public class OrderScreen extends AppCompatActivity {
         ExitScreen();
     }
 
+    public void OnOrderSelected(){
+        if(OrderSession.getInstance().isOrderAccepted()){
+            startActivity(new Intent(OrderScreen.this,Tracker.class));
+        }
+    }
+
     public void ExitScreen(){
 //        Opens a dialog box to confirm exit
 
@@ -87,9 +93,12 @@ public class OrderScreen extends AppCompatActivity {
         builder.setTitle("Confirm exit");
 
         builder.setCancelable(false);
-
+        // When the user click yes button then app will close
         builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
-            // When the user click yes button then app will close
+//            Order should be erased and Order Status should be called for Canceled.
+//            Also server calls should be done, Along with clearing the sharedPreference instance too.
+            OrderSession.getInstance().getOrder().setStatus("Canceled By Agent");
+            OrderSession.getInstance().clearSession();
             finish();
         });
         builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {

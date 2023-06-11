@@ -139,9 +139,10 @@ public class SignUp extends AppCompatActivity {
                 agent = new Agent(firstName,lastName,selectedGender,email,password,age);
 
 
+//              Disable the button while processing
+                signInButton.setEnabled(false);
                 // All fields are valid, continue with your login logic here
                 registerUser(agent);
-                // For example, you can call a method to authenticate the user with Firebase Authentication
 
             }
         });

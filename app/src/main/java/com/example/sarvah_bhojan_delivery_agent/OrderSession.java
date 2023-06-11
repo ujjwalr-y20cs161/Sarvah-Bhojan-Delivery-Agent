@@ -16,7 +16,7 @@ public class OrderSession {
         return instance;
     }
 
-    public void setUser(Order order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
 
