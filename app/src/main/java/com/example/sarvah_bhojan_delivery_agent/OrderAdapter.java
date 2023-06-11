@@ -74,6 +74,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
             reject.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+//                    changing UI
                     item.setStatus("Still Pending");
                     Stat.setText("You rejected this order!");
                     Stat.setTextColor(ContextCompat.getColor(view.getContext(), R.color.denyred));
@@ -86,10 +87,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
                 @Override
                 public void onClick(View view) {
                     if(OrderSession.getInstance().getOrder() == null) {
+//                    Changing state of the order object
                         item.setStatus("Agent Assigned");
                         item.setAgentId(UserSession.getInstance().getUser().getUid());
 //                        Saving the order in the order session
-//                        Should also store the order in sharedPreference, but should need the order coming from backend.
+//                        TODO : Should also store the order in sharedPreference, but should need the order coming from backend.
                         OrderSession.getInstance().setOrder(item);
 
 //                        Changing UI
@@ -99,36 +101,38 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
                         accept.setText("Order Status");
 
 
-// Get the current drawables on the right, left, top, and bottom of the TextView
+//                        Change Drawables of Button
                         Drawable[] drawables = accept.getCompoundDrawablesRelative();
-
-// Create a new drawable for the replacement
                         Drawable newDrawable = ContextCompat.getDrawable(view.getContext(), R.drawable.baseline_chevron_right_24);
-
-// Set the new drawable on the right side, while preserving the existing drawables on other sides
                         accept.setCompoundDrawablesRelativeWithIntrinsicBounds(drawables[0], drawables[1], newDrawable, drawables[3]);
 
-//                    Should also start an Order Tracking Notification:
+//                    TODO : Should also start an Order Tracking Notification:
 
+//                        Toasts
+                        Toast.makeText(view.getContext(), "You have accepted order : "+item.getId(), Toast.LENGTH_SHORT).show();
                         //start the activity from the view/context
                         Intent intent = new Intent(view.getContext(), Tracker.class);
                         view.getContext().startActivity(intent);
 
                     }else if(OrderSession.getInstance().getOrder().getId() == item.getId()){
+
+                        //                        Change Drawables of Button not often encountered case
+                        Drawable[] drawables = accept.getCompoundDrawablesRelative();
+                        Drawable newDrawable = ContextCompat.getDrawable(view.getContext(), R.drawable.baseline_chevron_right_24);
+                        accept.setCompoundDrawablesRelativeWithIntrinsicBounds(drawables[0], drawables[1], newDrawable, drawables[3]);
+
                         //start the activity from the view/context
                         Intent intent = new Intent(view.getContext(), Tracker.class);
                         view.getContext().startActivity(intent);
                     }else{
                         accept.setText("Cannot Accept!");
-                        // Get the current drawables on the right, left, top, and bottom of the TextView
+//                        Drawables Change
                         Drawable[] drawables = accept.getCompoundDrawablesRelative();
-                        // Create a new drawable for the replacement
                         Drawable newDrawable = ContextCompat.getDrawable(view.getContext(), R.drawable.baseline_block_24);
-                        // Set the new drawable on the right side, while preserving the existing drawables on other sides
                         accept.setCompoundDrawablesRelativeWithIntrinsicBounds(drawables[0], drawables[1], newDrawable, drawables[3]);
+
                         Toast.makeText(view.getContext(), "You have already accepted order, with no: "+OrderSession.getInstance().getOrder().getId(), Toast.LENGTH_SHORT).show();
                     }
-
 
                 }
             });

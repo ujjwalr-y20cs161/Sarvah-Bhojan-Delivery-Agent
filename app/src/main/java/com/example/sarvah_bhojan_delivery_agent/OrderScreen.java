@@ -96,7 +96,9 @@ public class OrderScreen extends AppCompatActivity {
         // When the user click yes button then app will close
         builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
 //            Order should be erased and Order Status should be called for Canceled.
-//            Also server calls should be done, Along with clearing the sharedPreference instance too.
+
+//           TODO : Also server calls should be done, Along with clearing the sharedPreference instance too.
+
             OrderSession.getInstance().getOrder().setStatus("Canceled By Agent");
             OrderSession.getInstance().clearSession();
             finish();

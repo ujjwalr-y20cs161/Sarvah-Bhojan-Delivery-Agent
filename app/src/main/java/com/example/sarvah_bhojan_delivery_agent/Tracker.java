@@ -23,11 +23,11 @@ public class Tracker extends AppCompatActivity {
         DynamicColors.applyToActivityIfAvailable(this);
         ActionBar actionBar = getSupportActionBar();
 
-// Hide the action bar title and show only the app icon
+        // Hide the action bar title and show only the app icon
         if (actionBar != null) {
             actionBar.setDisplayShowTitleEnabled(true);
             actionBar.setTitle(this.ScreenTitle);
-            actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
+            actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setIcon(R.mipmap.ic_launcher);
         }
 

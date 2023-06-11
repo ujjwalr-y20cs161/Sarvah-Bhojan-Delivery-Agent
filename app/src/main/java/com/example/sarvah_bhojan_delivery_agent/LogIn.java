@@ -78,6 +78,8 @@ public class LogIn extends AppCompatActivity {
                     signIn.setEnabled(false);
                     signUp.setEnabled(false);
                     forgotPassword.setEnabled(false);
+//                    Toasts
+                    Toast.makeText(LogIn.this, "Logging you in!", Toast.LENGTH_SHORT).show();
                     loginUser(email.getText().toString(),password.getText().toString());
 //                    While processing Disable button
 
@@ -101,6 +103,7 @@ public class LogIn extends AppCompatActivity {
                 signUp.setEnabled(false);
                 signIn.setEnabled(false);
                 forgotPassword.setEnabled(false);
+
 //                Intent call
                 Intent intent = new Intent(getApplicationContext(),SignUp.class);
                 startActivity(intent);
