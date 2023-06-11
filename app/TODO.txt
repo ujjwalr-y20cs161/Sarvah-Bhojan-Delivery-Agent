@@ -17,7 +17,15 @@ $ Last commit : cba9916 (HEAD -> master, origin/master) Added UserSession, Logou
 $ ad41ad0 (HEAD -> master, origin/master) Added Correct Logic for User Session management,Added Logic for Logout,SignIn,SplashScreen,LogIn
 
 
-* Agent Location and Map View
-#1 . Add Permission to obtain Agent Location.
-#2 . Add a button, to switch on Active Mode.
-#3 . Add a MapView to show the current location.
+* Agent Location Order Screen
+~#1 . Add Permission to obtain Agent Location.
+~#2 . Add a button, to switch on Active Mode.
+X #3 . Add a MapView to show the current location.
+
+$a07ffa9 (HEAD -> master, origin/master) Added Orders, OrderScreen, Order Adapter,Added Logout and Exit Dialogs
+
+
+* Order Sessioning and Order tracking, Map in WebView
+~#1 Store the accepted Order using Session Track
+#2 Make a map in a webView and show case Go to PickUp, Navigate to Drop Locations
+#3 Delivered Button, Cancel only before picking up.
