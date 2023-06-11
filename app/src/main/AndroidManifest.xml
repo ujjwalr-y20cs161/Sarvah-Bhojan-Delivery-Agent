@@ -20,9 +20,9 @@
         android:theme="@style/SplashScreenTheme"
         tools:targetApi="33">
         <activity
-            android:name=".ActiveMap"
+            android:name=".OrderScreen"
             android:exported="false"
-            android:theme="@style/DynamicThemes"/>
+            android:theme="@style/DynamicThemes" />
         <activity
             android:name=".SignUp"
             android:exported="false"
@@ -48,7 +48,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>
