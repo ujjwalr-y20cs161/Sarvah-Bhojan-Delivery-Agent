@@ -45,7 +45,7 @@ public class OrderScreen extends AppCompatActivity {
             actionBar.setDisplayShowTitleEnabled(true);
             actionBar.setTitle(this.ScreenTitle);
             actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
-            actionBar.setIcon(R.mipmap.ic_launcher);
+            actionBar.setIcon(R.drawable.baseline_west_24);
         }
         // Initialize the Views
         deactive = findViewById(R.id.Deactivate);

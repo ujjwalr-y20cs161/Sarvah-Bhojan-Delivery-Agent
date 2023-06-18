@@ -4,17 +4,22 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.material.color.DynamicColors;
+
+import org.w3c.dom.Text;
 
 public class Tracker extends AppCompatActivity {
 
@@ -29,14 +34,26 @@ public class Tracker extends AppCompatActivity {
         setContentView(R.layout.activity_tracker);
 
         DynamicColors.applyToActivityIfAvailable(this);
-        ActionBar actionBar = getSupportActionBar();
-// Hide the action bar title and show only the app icon
-        if (actionBar != null) {
-            actionBar.setDisplayShowTitleEnabled(true);
-            actionBar.setTitle(this.ScreenTitle);
-            actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
-            actionBar.setIcon(R.mipmap.ic_launcher);
-        }
+        getSupportActionBar().hide();
+        TextView actionBarText = findViewById(R.id.actionBarText);
+        actionBarText.setText(this.ScreenTitle);
+        ImageButton backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle back button click
+                onBackPressed();
+            }
+        });
+// Settings button click listener
+        ImageButton settingsButton = findViewById(R.id.settingsButton);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle settings button click
+                // Open settings activity or show a settings menu
+            }
+        });
 
         pickUp = findViewById(R.id.toPick);
         dropTo = findViewById(R.id.toDrop);

@@ -6,6 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".Tracker">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/customActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/track_order_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Back button -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_chevron_left_24"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <!-- Custom text -->
+        <TextView
+            android:id="@+id/actionBarText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/material_dynamic_neutral0"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="82dp" />
+
+        <!-- Settings icon -->
+        <ImageButton
+            android:id="@+id/settingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_margin="15dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_account_circle_24"
+            tools:layout_editor_absoluteX="387dp" />
+    </com.google.android.material.appbar.MaterialToolbar>
+
 
     <TextView
         android:id="@+id/track_order_details"
@@ -13,15 +57,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:lineSpacingExtra="10dp"
         android:padding="5dp"
         android:text="Order Details :"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/customActionBar" />
 
     <WebView
         android:id="@+id/webView"
@@ -37,6 +83,7 @@
     </WebView>
 
     <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/webView"

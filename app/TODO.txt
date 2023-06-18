@@ -27,5 +27,22 @@ $a07ffa9 (HEAD -> master, origin/master) Added Orders, OrderScreen, Order Adapte
 
 * Order Sessioning and Order tracking, Map in WebView
 ~#1 Store the accepted Order using Session Track
-#2 Make a map in a webView and show case Go to PickUp, Navigate to Drop Locations
-#3 Delivered Button, Cancel only before picking up.
+~#2 Make a map in a webView and show case Go to PickUp, Navigate to Drop Locations
+~#3 Delivered Button, Cancel only before picking up.
+
+$5cc437a (HEAD -> master, origin/master) Added pickup,dropto,delivered,cancel Buttons : Added WebView,MapIntent : Modified Constructor of OrderClass
+
+18-06-2023:
+
+## change the button positions and change action bar icon to back button and only show app icon in Home\Landing Screen
+
+*Add a settings Page:
+#1 Contains User Info
+#2 User Edit/Delete User Operation
+#3 About App information and Add a Tutorial Page - [that can fetch data from FB Db and Display].
+
+
+*Make the orders fetch from firebase, by builting user App and setting a operation to create and upload orders
+1 Built User Module App with Login,SignUp, Landing and splash, Landing Screen:
+2 Create functionalilty to add orders and link with Firebase
+3 Access those order objects from firebase and show case the orders
