@@ -18,6 +18,7 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.color.DynamicColors;
 
@@ -39,6 +40,9 @@ public class OrderScreen extends AppCompatActivity {
 //        Dynamic Colors apply
         DynamicColors.applyToActivityIfAvailable(this);
         getSupportActionBar().hide();
+
+        TextView actionBarText = findViewById(R.id.actionBarText);
+        actionBarText.setText(this.ScreenTitle);
 
         // Initialize the Views
         deactive = findViewById(R.id.Deactivate);

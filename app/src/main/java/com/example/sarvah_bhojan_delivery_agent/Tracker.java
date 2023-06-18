@@ -132,6 +132,7 @@ public class Tracker extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                cancel.setEnabled(false);
 //                TODO : Implement Cancellation Rules
             }
         });

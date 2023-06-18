@@ -46,7 +46,7 @@
             android:layout_gravity="end"
             android:layout_marginEnd="16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/baseline_account_circle_24" />
+            android:src="@drawable/baseline_help_outline_24" />
 
     </com.google.android.material.appbar.MaterialToolbar>
 
@@ -78,7 +78,8 @@
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/track_order_details">
+                android:layout_below="@id/track_order_details"
+                android:paddingBottom="10dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"

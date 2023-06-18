@@ -72,7 +72,6 @@ public class LogIn extends AppCompatActivity {
                     signUp.setEnabled(false);
                     forgotPassword.setEnabled(false);
 //                    Toasts
-                    Toast.makeText(LogIn.this, "Logging you in!", Toast.LENGTH_SHORT).show();
                     loginUser(email.getText().toString(),password.getText().toString());
 //                    While processing Disable button
 
@@ -125,6 +124,7 @@ public class LogIn extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference agentsRef = database.getReference("agents");
                 DatabaseReference agentRef = agentsRef.push();
+                Toast.makeText(LogIn.this, "Logging you in!", Toast.LENGTH_SHORT).show();
                 agentsRef.orderByChild("uid").equalTo(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -157,6 +157,9 @@ public class LogIn extends AppCompatActivity {
 
             }else{
                 Toast.makeText(this, "Login Unsuccessful, Try Again!", Toast.LENGTH_SHORT).show();
+                signIn.setEnabled(true);
+                signUp.setEnabled(true);
+                forgotPassword.setEnabled(true);
             }
         }));
     }

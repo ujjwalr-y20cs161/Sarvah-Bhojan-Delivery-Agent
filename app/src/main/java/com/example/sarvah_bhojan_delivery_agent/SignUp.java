@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,15 +43,20 @@ public class SignUp extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         DynamicColors.applyToActivityIfAvailable(this);
-        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().hide();
+
+        ImageButton back = findViewById(R.id.backButton);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         ScreenTitle = "Sign Up Page";
 // Hide the action bar title and show only the app icon
-        if (actionBar != null) {
-            actionBar.setDisplayShowTitleEnabled(true);
-            actionBar.setTitle(this.ScreenTitle);
-            actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
-            actionBar.setIcon(R.drawable.baseline_west_24);
-        }
+        TextView actionBarText = findViewById(R.id.actionBarText);
+        actionBarText.setText(this.ScreenTitle);
+
         signinText = "Hello there!";
         welcomegreet = "Welcome \nPlease Enter Details to Sign up.";
         activity_title = (TextView) findViewById(R.id.activity_sign_in);

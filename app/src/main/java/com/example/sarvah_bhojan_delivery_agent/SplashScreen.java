@@ -27,7 +27,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        this.getSupportActionBar().hide();
+        getSupportActionBar().hide();
         Message = (TextView) findViewById(R.id.app_title);
         Message.setText("Welcome to "+getText(R.string.app_name));
 
