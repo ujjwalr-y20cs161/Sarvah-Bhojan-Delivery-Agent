@@ -43,15 +43,8 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         DynamicColors.applyToActivityIfAvailable(this);
-        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().hide();
         ScreenTitle = "Log In Page";
-// Hide the action bar title and show only the app icon
-        if (actionBar != null) {
-            actionBar.setDisplayShowTitleEnabled(true);
-            actionBar.setTitle(this.ScreenTitle);
-            actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
-            actionBar.setIcon(R.mipmap.ic_launcher);
-        }
 
         myapp=(MyApp)getApplicationContext();
 

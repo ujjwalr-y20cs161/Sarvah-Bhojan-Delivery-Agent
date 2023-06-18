@@ -1,138 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Tracker">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/customActionBar"
+        style="@style/Widget.Material3.Toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/track_order_details"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="@color/actionBar"
+        android:elevation="5dp"
+        android:gravity="center">
 
         <!-- Back button -->
         <ImageButton
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_margin="15dp"
+            android:layout_marginStart="16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/baseline_chevron_left_24"
-            tools:layout_editor_absoluteX="16dp" />
+            android:src="@drawable/baseline_chevron_left_24" />
 
         <!-- Custom text -->
         <TextView
             android:id="@+id/actionBarText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toLeftOf="@id/settingsButton"
+            android:layout_toRightOf="@id/backButton"
             android:gravity="center"
             android:text="@string/app_name"
-            android:textColor="@color/material_dynamic_neutral0"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="82dp" />
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
         <!-- Settings icon -->
         <ImageButton
             android:id="@+id/settingsButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
             android:layout_gravity="end"
-            android:layout_margin="15dp"
+            android:layout_marginEnd="16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/baseline_account_circle_24"
-            tools:layout_editor_absoluteX="387dp" />
+            android:src="@drawable/baseline_account_circle_24" />
+
     </com.google.android.material.appbar.MaterialToolbar>
 
-
-    <TextView
-        android:id="@+id/track_order_details"
-        style="@style/MaterialAlertDialog.Material3.Body.Text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:lineSpacingExtra="10dp"
-        android:padding="5dp"
-        android:text="Order Details :"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customActionBar" />
-
-    <WebView
-        android:id="@+id/webView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/track_order_details">
-
-    </WebView>
-
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/webView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/track_order_details">
+        android:layout_height="match_parent"
+        android:layout_below="@id/customActionBar">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            tools:context=".Tracker">
 
-            <Button
-                android:id="@+id/toPick"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/track_order_details"
+                style="@style/MaterialAlertDialog.Material3.Body.Text"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="Pick Up" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:lineSpacingExtra="10dp"
+                android:padding="5dp"
+                android:text="Order Details :"
+                android:textSize="20sp" />
 
-            <Button
-                android:id="@+id/toDrop"
-                android:layout_width="wrap_content"
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="Drop To" />
+                android:layout_below="@id/track_order_details">
 
-            <Button
-                android:id="@+id/Delivered"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="Delivered" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/cancel_order"
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/denyred"
-                android:text="Cancel" />
+                    <Button
+                        android:id="@+id/toPick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="Pick Up" />
 
-        </LinearLayout>
+                    <Button
+                        android:id="@+id/toDrop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="Drop To" />
 
-    </HorizontalScrollView>
+                    <Button
+                        android:id="@+id/Delivered"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="Delivered" />
 
+                    <Button
+                        android:id="@+id/cancel_order"
+                        style="@style/Widget.Material3.Button.UnelevatedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/denyred"
+                        android:text="Cancel" />
+                </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_below="@id/horizontalScrollView"
+                tools:ignore="WebViewLayout" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

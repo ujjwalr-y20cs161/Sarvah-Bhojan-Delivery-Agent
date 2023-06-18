@@ -3,6 +3,6 @@
     <style name = "DynamicThemes" parent="Theme.Material3.DynamicColors.DayNight">
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="fontFamily">@font/quicksand_medium</item>
-        <item name="actionBarStyle">@style/Theme.AppCompat.NoActionBar</item>
+        <item name="android:statusBarColor">@color/actionBar</item>
     </style>
 </resources>

@@ -38,15 +38,8 @@ public class OrderScreen extends AppCompatActivity {
         setContentView(R.layout.activity_order);
 //        Dynamic Colors apply
         DynamicColors.applyToActivityIfAvailable(this);
-        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().hide();
 
-// Hide the action bar title and show only the app icon
-        if (actionBar != null) {
-            actionBar.setDisplayShowTitleEnabled(true);
-            actionBar.setTitle(this.ScreenTitle);
-            actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
-            actionBar.setIcon(R.drawable.baseline_west_24);
-        }
         // Initialize the Views
         deactive = findViewById(R.id.Deactivate);
         // Initialize data

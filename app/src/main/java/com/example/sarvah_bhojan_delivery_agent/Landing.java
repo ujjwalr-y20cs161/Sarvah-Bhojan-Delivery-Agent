@@ -16,6 +16,7 @@ import android.Manifest;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,15 +40,32 @@ public class Landing extends AppCompatActivity {
         setContentView(R.layout.activity_landing);
         //Dynamic Colors to applied on the screen
         DynamicColors.applyToActivityIfAvailable(this);
-        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().hide();
 
-// Hide the action bar title and show only the app icon
-        if (actionBar != null) {
-            actionBar.setDisplayShowTitleEnabled(true);
-            actionBar.setTitle(this.ScreenTitle);
-            actionBar.setDisplayShowHomeEnabled(true); // Optional: Enable the back button if needed
-            actionBar.setIcon(R.mipmap.ic_launcher);
-        }
+        // Back button click listener
+        ImageButton backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle back button click
+//                onBackPressed();
+                Toast.makeText(Landing.this, "Hello!!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+// Settings button click listener
+        ImageButton settingsButton = findViewById(R.id.settingsButton);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle settings button click
+                // Open settings activity or show a settings menu
+            }
+        });
+
+
+
+
 
         logout = (Button) findViewById(R.id.logout);
         active = (Button)findViewById(R.id.active);
