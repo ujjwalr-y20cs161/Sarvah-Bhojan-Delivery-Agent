@@ -16,9 +16,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.color.DynamicColors;
 
@@ -93,12 +95,15 @@ public class OrderScreen extends AppCompatActivity {
         // When the user click yes button then app will close
         builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
 //            Order should be erased and Order Status should be called for Canceled.
-
 //           TODO : Also server calls should be done, Along with clearing the sharedPreference instance too.
-
-            OrderSession.getInstance().getOrder().setStatus("Canceled By Agent");
-            OrderSession.getInstance().clearSession();
+            if(OrderSession.getInstance().getOrder()!=null){
+                OrderSession.getInstance().getOrder().setStatus("Canceled By Agent");
+                Log.e("Order-Session",OrderSession.getInstance().getOrder().getStatus());
+                OrderSession.getInstance().clearSession();
+                Toast.makeText(OrderScreen.this, "Order Canceled and Cleared!", Toast.LENGTH_SHORT).show();
+            }
             finish();
+
         });
         builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
             dialog.cancel();

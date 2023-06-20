@@ -1,6 +1,5 @@
 package com.example.sarvah_bhojan_delivery_agent;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -14,6 +13,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.Manifest;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -58,8 +58,8 @@ public class Landing extends AppCompatActivity {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle settings button click
-                // Open settings activity or show a settings menu
+                Intent intent = new Intent(Landing.this,Settings.class);
+                startActivity(intent);
             }
         });
 
@@ -67,12 +67,13 @@ public class Landing extends AppCompatActivity {
 
 
 
-        logout = (Button) findViewById(R.id.logout);
+        logout = (Button) findViewById(R.id.settings_logout);
         active = (Button)findViewById(R.id.active);
         // Reference the TextViews
         textGreeting = findViewById(R.id.text_greeting);
         textName = findViewById(R.id.text_name);
         textEmail = findViewById(R.id.text_email);
+
 
 //      Retrieving SavedInstance of User
         Agent myAgent = UserSession.getInstance().getUser();
@@ -87,8 +88,8 @@ public class Landing extends AppCompatActivity {
             Toast.makeText(this, "Error Encountered!\nPlease Logout and Login Again.", Toast.LENGTH_SHORT).show();
             SharedPreferences sharedPref = getSharedPreferences("user_session", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putBoolean("LoggedIn",false);
-            editor.putString("AgentID","");
+            editor.remove("LoggedIn");
+            editor.remove("AgentID");
             editor.apply();
         }
 
