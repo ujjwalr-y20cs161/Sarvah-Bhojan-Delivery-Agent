@@ -9,8 +9,18 @@ public class Agent  {
     public String firstName,lastName,gender;
     private String emailId,password;
     private String uid;
+
+    private String paymentAccNo;
     public int age;
     private static long uidGen = 1000;
+
+    public String getPaymentAccNo() {
+        return paymentAccNo;
+    }
+
+    public void setPaymentAccNo(String paymentAccNo) {
+        this.paymentAccNo = paymentAccNo;
+    }
 
     public Agent(String firstName , String lastName, String gender, String emailId, String password, int age) {
         this.firstName = firstName;

@@ -63,11 +63,6 @@ public class Landing extends AppCompatActivity {
             }
         });
 
-
-
-
-
-        logout = (Button) findViewById(R.id.settings_logout);
         active = (Button)findViewById(R.id.active);
         // Reference the TextViews
         textGreeting = findViewById(R.id.text_greeting);
@@ -103,13 +98,7 @@ public class Landing extends AppCompatActivity {
         }
 
 //        Logout ClickListener
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Opens a Dialog Box to Confirm Logout
-                Logout();
-            }
-        });
+
 
 //Makes Agent Visible in the server
         active.setOnClickListener((new View.OnClickListener() {
@@ -137,36 +126,4 @@ public class Landing extends AppCompatActivity {
         }
     }
 
-    public void Logout(){
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(Landing.this);
-        builder.setMessage("Do you want to Logout?");
-
-        builder.setTitle("Confirm Logout");
-
-        builder.setCancelable(false);
-
-        builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
-            // When the user click yes button then app will close
-            Toast.makeText(getApplicationContext(), "Logged Out Successfully", Toast.LENGTH_SHORT).show();
-//           Clear the saved agent Info
-            UserSession.getInstance().clearSession();
-//            Clear the sharedPreferences
-            SharedPreferences sharedPref = getSharedPreferences("user_session", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.remove("LoggedIn");
-            editor.remove("AgentID");
-            editor.apply();
-//            Redirect to Login screen
-            startActivity(new Intent(getApplicationContext(), LogIn.class));
-//            Remove current Screen from history stack
-            finish();
-        });
-        builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
-            dialog.cancel();
-        });
-
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-    }
 }

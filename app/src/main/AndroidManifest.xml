@@ -21,7 +21,8 @@
         tools:targetApi="33">
         <activity
             android:name=".Settings"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/DynamicThemes"/>
         <activity
             android:name=".Tracker"
             android:exported="false"

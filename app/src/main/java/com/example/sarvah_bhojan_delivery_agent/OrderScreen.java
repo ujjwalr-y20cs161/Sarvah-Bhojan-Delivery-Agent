@@ -66,7 +66,7 @@ public class OrderScreen extends AppCompatActivity {
         deactive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ExitScreen();
+                onBackPressed();
             }
         });
 
@@ -74,17 +74,7 @@ public class OrderScreen extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        ExitScreen();
-    }
-
-    public void OnOrderSelected(){
-        if(OrderSession.getInstance().isOrderAccepted()){
-            startActivity(new Intent(OrderScreen.this,Tracker.class));
-        }
-    }
-
-    public void ExitScreen(){
-//        Opens a dialog box to confirm exit
+        //        Opens a dialog box to confirm exit
 
         AlertDialog.Builder builder = new AlertDialog.Builder(OrderScreen.this);
         builder.setMessage("Do you want to exit ?\nBy exiting orders will be cancelled.");
