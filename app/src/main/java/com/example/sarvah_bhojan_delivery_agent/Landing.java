@@ -4,16 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.Manifest;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -31,7 +30,7 @@ public class Landing extends AppCompatActivity {
 
     public MyApp myapp;
     public String ScreenTitle = "Home";
-    private Button logout,active;
+    public Button active;
     private static final int REQUEST_LOCATION_PERMISSION = 1001;
 
     @Override
@@ -64,19 +63,27 @@ public class Landing extends AppCompatActivity {
         });
 
         active = (Button)findViewById(R.id.active);
+        TextView actionBarText = findViewById(R.id.actionBarText);
+        actionBarText.setText(this.ScreenTitle);
         // Reference the TextViews
         textGreeting = findViewById(R.id.text_greeting);
         textName = findViewById(R.id.text_name);
-        textEmail = findViewById(R.id.text_email);
 
+        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.baseline_circle_24);
+        int color = ContextCompat.getColor(getApplicationContext(), R.color.denyred);
+
+        if (drawable != null) {
+            drawable.setTint(color);
+            drawable.invalidateSelf();
+        }
 
 //      Retrieving SavedInstance of User
         Agent myAgent = UserSession.getInstance().getUser();
         if(myAgent!=null) {
 //           Populating UI with Agent Info
-            textGreeting.setText(getGreeting()+" "+MyApp.toTitleCase(myAgent.getFirstName())+"!");
-            textEmail.setText("Email : "+myAgent.getEmailId());
-            textName.setText("Name : "+MyApp.toTitleCase(myAgent.getFirstName()+" "+myAgent.lastName));
+            textGreeting.setText(getGreeting());
+            textName.setText(myAgent.getFirstName());
+
         }
         else{
 //            if any error, this will clean the shared preferences and reset the session.
@@ -106,6 +113,11 @@ public class Landing extends AppCompatActivity {
             public void onClick(View view) {
 //              Should send, active call to Server and the current location of the agent:
 //               Server Calls.
+                int color = ContextCompat.getColor(getApplicationContext(), R.color.green);
+                if (drawable != null) {
+                    drawable.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+                    drawable.invalidateSelf();
+                }
                 startActivity(new Intent(getApplicationContext(), OrderScreen.class));
             }
         }));
@@ -116,13 +128,13 @@ public class Landing extends AppCompatActivity {
         int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
 
         if (hourOfDay >= 5 && hourOfDay < 12) {
-            return "Good morning 🌅\n";
+            return "Good morning 🌅";
         } else if (hourOfDay >= 12 && hourOfDay < 17) {
-            return "Good afternoon ☀️\n";
+            return "Good afternoon ☀️";
         } else if (hourOfDay >= 17 && hourOfDay < 19) {
-            return "Good evening 🌇\n";
+            return "Good evening 🌇";
         } else {
-            return "Good night 🌃\n";
+            return "Good night 🌃";
         }
     }
 

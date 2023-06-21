@@ -87,6 +87,7 @@ public class OrderScreen extends AppCompatActivity {
 //            Order should be erased and Order Status should be called for Canceled.
 //           TODO : Also server calls should be done, Along with clearing the sharedPreference instance too.
             if(OrderSession.getInstance().getOrder()!=null){
+
                 OrderSession.getInstance().getOrder().setStatus("Canceled By Agent");
                 Log.e("Order-Session",OrderSession.getInstance().getOrder().getStatus());
                 OrderSession.getInstance().clearSession();
