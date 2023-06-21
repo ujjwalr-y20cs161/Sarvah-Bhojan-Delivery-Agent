@@ -20,9 +20,30 @@
         android:theme="@style/DynamicThemes"
         tools:targetApi="33">
         <activity
+            android:name=".Appearance"
+            android:exported="false" />
+        <activity
+            android:name=".Tutorial"
+            android:exported="false" />
+        <activity
+            android:name=".SessionLog"
+            android:exported="false" />
+        <activity
+            android:name=".About"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentSetup"
+            android:exported="false" />
+        <activity
+            android:name=".OrderHistory"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
             android:name=".Settings"
             android:exported="false"
-            android:theme="@style/DynamicThemes"/>
+            android:theme="@style/DynamicThemes" />
         <activity
             android:name=".Tracker"
             android:exported="false"

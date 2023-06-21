@@ -207,6 +207,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/home_uptime_card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
@@ -248,7 +249,7 @@
                                 android:layout_height="wrap_content"
                                 android:drawableRight="@drawable/baseline_chevron_right_24"
                                 android:padding="10dp"
-                                android:text="More"
+                                android:text="See Log"
                                 android:textColor="@color/black" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -263,14 +264,14 @@
                 android:padding="16dp"
                 android:text="Completed Orders"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/cardView4"
+                app:layout_constraintBottom_toTopOf="@+id/order_card"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView4"
+                android:id="@+id/order_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -307,7 +308,7 @@
                         android:textColor="@color/black" />
 
                     <TextView
-                        android:id="@+id/textView11"
+                        android:id="@+id/appearance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
@@ -315,7 +316,7 @@
                         android:textColor="@color/material_dynamic_primary95" />
 
                     <TextView
-                        android:id="@+id/textView12"
+                        android:id="@+id/about"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"

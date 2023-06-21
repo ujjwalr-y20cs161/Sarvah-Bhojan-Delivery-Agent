@@ -1,6 +1,7 @@
 package com.example.sarvah_bhojan_delivery_agent;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -121,6 +122,31 @@ public class Landing extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), OrderScreen.class));
             }
         }));
+
+        CardView Earning,Uptime,Orders;
+        Earning = findViewById(R.id.home_earn_card);
+        Earning.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Landing.this, OrderHistory.class));
+            }
+        });
+
+        Uptime = findViewById(R.id.home_uptime_card);
+        Uptime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Landing.this, SessionLog.class));
+            }
+        });
+
+        Orders = findViewById(R.id.order_card);
+        Orders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Landing.this, OrderHistory.class));
+            }
+        });
     }
 
     public String getGreeting() {
