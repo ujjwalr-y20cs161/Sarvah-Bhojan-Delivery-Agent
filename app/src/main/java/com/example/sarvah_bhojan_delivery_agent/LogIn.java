@@ -91,11 +91,6 @@ public class LogIn extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Disable buttons while processing
-                signUp.setEnabled(false);
-                signIn.setEnabled(false);
-                forgotPassword.setEnabled(false);
-
 //                Intent call
                 Intent intent = new Intent(getApplicationContext(),SignUp.class);
                 startActivity(intent);
