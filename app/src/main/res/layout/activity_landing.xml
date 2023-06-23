@@ -196,7 +196,7 @@
                                 android:textSize="16dp" />
 
                             <TextView
-                                android:id="@+id/textView5"
+                                android:id="@+id/More"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:drawableRight="@drawable/baseline_chevron_right_24"
@@ -244,7 +244,7 @@
                                 android:textSize="16dp" />
 
                             <TextView
-                                android:id="@+id/textView6"
+                                android:id="@+id/SeeLog"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:drawableRight="@drawable/baseline_chevron_right_24"

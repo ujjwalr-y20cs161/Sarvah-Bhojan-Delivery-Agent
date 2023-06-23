@@ -123,8 +123,9 @@ public class Landing extends AppCompatActivity {
             }
         }));
 
-        CardView Earning,Uptime,Orders;
-        Earning = findViewById(R.id.home_earn_card);
+        CardView Orders;
+        TextView Earning,Uptime;
+        Earning = findViewById(R.id.More);
         Earning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,7 +133,7 @@ public class Landing extends AppCompatActivity {
             }
         });
 
-        Uptime = findViewById(R.id.home_uptime_card);
+        Uptime = findViewById(R.id.SeeLog);
         Uptime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

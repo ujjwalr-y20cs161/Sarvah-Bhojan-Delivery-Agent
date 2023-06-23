@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import java.util.Date;
+
 public class Agent  {
     public String firstName,lastName,gender;
     private String emailId,password;
@@ -13,6 +15,8 @@ public class Agent  {
     private String paymentAccNo;
     public int age;
     private static long uidGen = 1000;
+
+    private Date joined;
 
     public String getPaymentAccNo() {
         return paymentAccNo;
@@ -30,6 +34,7 @@ public class Agent  {
         this.password = password;
         this.age = age;
         this.uid = generateUID();
+        this.joined = new Date();
     }
 
     public String getUid() {
@@ -44,6 +49,7 @@ public class Agent  {
         this.emailId = emailId;
         this.password = password;
         this.uid = generateUID();
+        this.joined = new Date();
     }
 
     public Agent(String firstName, String emailId, String password) {
@@ -51,6 +57,7 @@ public class Agent  {
         this.emailId = emailId;
         this.password = password;
         this.uid = generateUID();
+        this.joined = new Date();
     }
 
     public Agent(Agent agentIns) {
@@ -61,12 +68,20 @@ public class Agent  {
         this.emailId= agentIns.getEmailId();
         this.password = agentIns.getPassword();
         this.uid = agentIns.getUid();
+        this.joined = agentIns.getJoined();
     }
 
     public Agent(){
 
     }
 
+    public Date getJoined() {
+        return joined;
+    }
+
+    public void setJoined(Date joined) {
+        this.joined = joined;
+    }
 
     private static String generateUID(){
         uidGen = uidGen+1;

@@ -6,9 +6,12 @@ import android.os.Bundle;
 
 public class Tutorial extends AppCompatActivity {
 
+    private String ScreenTitle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutorial);
+        setContentView(R.layout.activity_about);
+        getSupportActionBar().hide();
     }
+
 }

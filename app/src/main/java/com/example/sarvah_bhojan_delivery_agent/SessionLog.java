@@ -6,9 +6,11 @@ import android.os.Bundle;
 
 public class SessionLog extends AppCompatActivity {
 
+    private String ScreenTitle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_session_log);
+        setContentView(R.layout.activity_about);
+        getSupportActionBar().hide();
     }
 }
