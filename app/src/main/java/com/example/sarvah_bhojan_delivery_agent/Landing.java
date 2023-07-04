@@ -30,7 +30,7 @@ public class Landing extends AppCompatActivity {
     private TextView textEmail;
 
     public MyApp myapp;
-    public String ScreenTitle = "Home";
+    public String ScreenTitle = "Sarva Bhojan\nDelivery Agent";
     public Button active;
     private static final int REQUEST_LOCATION_PERMISSION = 1001;
 

@@ -1,9 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PaymentSetup">
+    tools:context=".Landing">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/customActionBar"
+        style="@style/Widget.Material3.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/actionBar"
+        android:elevation="5dp"
+        android:gravity="center">
+
+        <!-- Back button -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_chevron_left_24" />
+
+        <!-- Custom text -->
+        <TextView
+            android:id="@+id/actionBarText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="16dp"
+            android:text="Account SetUp"
+            android:textColor="@color/material_dynamic_primary10"
+            android:textSize="20sp" />
+        <!-- Settings icon -->
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/customActionBar"
+        android:layout_marginTop="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:gravity="center_horizontal">
+            <!-- Agent Greeting -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Earning Account Setup"
+                    android:layout_margin="24dp"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:id="@+id/editTextBankName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:hint="Bank Name"
+                    android:drawableLeft="@drawable/baseline_account_balance_24"
+                    android:drawablePadding="8dp"
+                    android:textSize="18sp"
+                    android:inputType="text" />
+
+                <EditText
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:id="@+id/editTextAccountNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Account Number"
+                    android:drawableLeft="@drawable/baseline_123_24"
+                    android:drawablePadding="8dp"
+                    android:layout_margin="16dp"
+                    android:textSize="18sp"
+                    android:inputType="number" />
+
+                <EditText
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:id="@+id/editTextIFSC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:hint="IFSC Code"
+                    android:drawableLeft="@drawable/baseline_location_city_24"
+                    android:drawablePadding="8dp"
+                    android:textSize="18sp"
+                    android:inputType="text" />
+
+                <Button
+                    android:id="@+id/buttonConfirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/baseline_done_24"
+                    android:text="Confirm" />
+
+            </LinearLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</RelativeLayout>
+

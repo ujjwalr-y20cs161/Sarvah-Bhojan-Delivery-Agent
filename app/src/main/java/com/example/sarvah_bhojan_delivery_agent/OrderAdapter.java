@@ -103,7 +103,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
 
 //                        Change Drawables of Button
                         Drawable[] drawables = accept.getCompoundDrawablesRelative();
-                        Drawable newDrawable = ContextCompat.getDrawable(view.getContext(), R.drawable.baseline_chevron_right_24);
+                        Drawable newDrawable = ContextCompat.getDrawable(view.getContext(), R.drawable.baseline_chevron_right_24_black);
                         accept.setCompoundDrawablesRelativeWithIntrinsicBounds(drawables[0], drawables[1], newDrawable, drawables[3]);
 
 //                    TODO : Should also start an Order Tracking Notification:

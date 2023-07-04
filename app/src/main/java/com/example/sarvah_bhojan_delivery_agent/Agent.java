@@ -26,16 +26,7 @@ public class Agent  {
         this.paymentAccNo = paymentAccNo;
     }
 
-    public Agent(String firstName , String lastName, String gender, String emailId, String password, int age) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.emailId = emailId;
-        this.password = password;
-        this.age = age;
-        this.uid = generateUID();
-        this.joined = new Date();
-    }
+
 
     public String getUid() {
         return uid;
@@ -75,48 +66,48 @@ public class Agent  {
 
     }
 
+    public Agent(String firstName , String lastName, String gender, String emailId, String password, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.emailId = emailId;
+        this.password = password;
+        this.age = age;
+        this.uid = generateUID();
+        this.joined = new Date();
+    }
     public Date getJoined() {
         return joined;
     }
-
     public void setJoined(Date joined) {
         this.joined = joined;
     }
-
     private static String generateUID(){
         uidGen = uidGen+1;
         return Long.toString(uidGen);
     }
-
-    public void setUid(String FireBaseID){
-        this.uid = FireBaseID;
-    }
-
-
-
+    public void setUid(String FireBaseID){this.uid = FireBaseID;}
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getAge() {
+        return Integer.toString(age);
     }
 
     public String getEmailId() {
         return emailId;
     }
-
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
-
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 }

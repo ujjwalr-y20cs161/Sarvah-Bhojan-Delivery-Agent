@@ -48,7 +48,7 @@ public class LogIn extends AppCompatActivity {
 
         myapp=(MyApp)getApplicationContext();
 
-        loginText ="Welcome to \n"+getString(R.string.app_name);
+        loginText ="Welcome to "+getString(R.string.app_name);
         LoginText = findViewById(R.id.Logintext);
         LoginText.setText(loginText);
 

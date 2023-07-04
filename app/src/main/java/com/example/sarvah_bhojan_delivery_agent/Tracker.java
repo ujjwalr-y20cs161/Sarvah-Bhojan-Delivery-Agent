@@ -50,8 +50,7 @@ public class Tracker extends AppCompatActivity {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle settings button click
-                // Open settings activity or show a settings menu
+                startActivity(new Intent(Tracker.this, Tutorial.class));
             }
         });
 

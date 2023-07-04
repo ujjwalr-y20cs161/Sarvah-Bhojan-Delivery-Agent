@@ -11,7 +11,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:layout_marginEnd="24dp"
         android:layout_marginBottom="66dp"
         android:padding="20dp"
         android:text="Profile Information"
@@ -36,7 +35,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/material_dynamic_tertiary80"
+            android:background="@color/material_dynamic_primary100"
+            android:gravity="center"
             android:orientation="vertical"
             android:padding="16dp">
 
@@ -46,8 +46,50 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="FullName"
+                android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="101 Years"
+                    android:gravity="end"
+                    android:textColor="@color/black" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="24sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="|"/>
+                <TextView
+                    android:id="@+id/Gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="Male"
+                    android:gravity="start"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/UserId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="#AS651DF1"
+                android:background="#11000000"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/email"
@@ -58,6 +100,8 @@
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
+
+
             <TextView
                 android:id="@+id/joined"
                 android:layout_width="match_parent"
@@ -66,37 +110,9 @@
                 android:text="Joined in May 2023"
                 android:textColor="@color/black" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/Age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="101 Years"
-                    android:textColor="@color/black" />
 
-                <TextView
-                    android:id="@+id/Gender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="Male"
-                    android:textColor="@color/black" />
-            </LinearLayout>
 
-            <TextView
-                android:id="@+id/UserId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="#AS651DF1"
-                android:textColor="@color/black" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -111,18 +127,17 @@
         app:layout_constraintStart_toStartOf="@+id/cardView4"
         app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
-    <ImageButton
+    <Button
         android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:background="@color/material_dynamic_primary100"
-        android:padding="10dp"
+        android:layout_marginStart="16dp"
+        android:drawableRight="@drawable/baseline_chevron_left_24"
         app:layout_constraintBottom_toBottomOf="@+id/Screen"
         app:layout_constraintEnd_toStartOf="@+id/Screen"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Screen"
-        app:srcCompat="@drawable/baseline_chevron_left_24" />
+        app:layout_constraintTop_toTopOf="@+id/Screen" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/edit_card"

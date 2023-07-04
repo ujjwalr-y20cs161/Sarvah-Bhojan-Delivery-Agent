@@ -53,41 +53,52 @@
         android:layout_below="@+id/customActionBar"
         android:layout_marginTop="0dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="500dp"
             android:gravity="center_horizontal">
             <!-- Agent Greeting -->
 
+            <TextView
+                android:id="@+id/dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin ="24dp"
+                android:text="Dashboard"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardView3"
+                android:layout_margin = "24dp"
+                android:text="Statistics"
+                android:textSize="20sp" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="24dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginBottom="16dp"
+                android:layout_below="@+id/dashboard"
                 android:background="@color/material_dynamic_secondary80"
-                app:cardCornerRadius="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:cardCornerRadius="20dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/material_dynamic_secondary80">
+                    android:background="@color/material_dynamic_primary100">
 
                     <TextView
                         android:id="@+id/text_greeting"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
-                        android:padding="8dp"
                         android:text="Good Morning"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
+                        android:textSize="24sp"
                         app:layout_constraintBottom_toTopOf="@+id/text_name"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +122,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginTop="1dp"
                         android:layout_marginBottom="43dp"
                         android:drawableLeft="@drawable/baseline_star_rate_24"
                         android:text="4/5"
@@ -120,16 +131,16 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/active"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_name" />
+                        app:layout_constraintTop_toBottomOf="@+id/Rating_text" />
 
                     <Button
                         android:id="@+id/active"
                         style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="64dp"
                         android:layout_marginEnd="24dp"
-                        android:layout_marginBottom="32dp"
+                        android:layout_marginBottom="16dp"
                         android:backgroundTint="@color/black"
                         android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
                         android:text="Active"
@@ -138,6 +149,34 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/rating"
                         app:layout_constraintTop_toBottomOf="@+id/text_name" />
+
+                    <TextView
+                        android:id="@+id/Rating_text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="64dp"
+                        android:text="Your rating :"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/rating"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_name" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="Start your delivery rides here."
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/Rating_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_name" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
@@ -146,11 +185,7 @@
                 android:id="@+id/horizontalScrollView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView3">
+                android:layout_below="@id/textView4">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -162,28 +197,17 @@
                         android:id="@+id/home_earn_card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
                         app:cardCornerRadius="25dp">
 
                         <LinearLayout
                             style="@style/Widget.Material3.Button.ElevatedButton"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@color/material_dynamic_tertiary80"
+                            android:background="@color/material_dynamic_primary30"
                             android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:id="@+id/earn_total"
-                                style="@style/MaterialAlertDialog.Material3.Body.Text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:drawableLeft="@drawable/baseline_attach_money_24"
-                                android:drawablePadding="8dp"
-                                android:padding="16dp"
-                                android:text="200"
-                                android:textColor="@color/black"
-                                android:textSize="20dp" />
+                            android:padding="8dp">
 
                             <TextView
                                 android:id="@+id/earning_label"
@@ -192,8 +216,20 @@
                                 android:layout_height="wrap_content"
                                 android:padding="16dp"
                                 android:text="Today's Earning"
-                                android:textColor="@color/black"
+                                android:textColor="@color/white"
                                 android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/earn_total"
+                                style="@style/MaterialAlertDialog.Material3.Body.Text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableRight="@drawable/baseline_attach_money_24"
+                                android:padding="16dp"
+                                android:text="200"
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+
 
                             <TextView
                                 android:id="@+id/More"
@@ -202,7 +238,7 @@
                                 android:drawableRight="@drawable/baseline_chevron_right_24"
                                 android:padding="10dp"
                                 android:text="More"
-                                android:textColor="@color/black" />
+                                android:textColor="@color/white" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -210,28 +246,17 @@
                         android:id="@+id/home_uptime_card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
                         app:cardCornerRadius="25dp">
 
                         <LinearLayout
-                            android:id="@+id/home_uptime_card"
+                            android:id="@+id/home_uptime_layout"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@color/material_dynamic_tertiary80"
+                            android:background="@color/material_dynamic_primary30"
                             android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:id="@+id/uptime_total"
-                                style="@style/MaterialAlertDialog.Material3.Body.Text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:drawableLeft="@drawable/baseline_access_time_24"
-                                android:drawablePadding="8dp"
-                                android:padding="16dp"
-                                android:text="1:02 mins"
-                                android:textColor="@color/black"
-                                android:textSize="20dp" />
+                            android:padding="8dp">
 
                             <TextView
                                 android:id="@+id/uptime_label"
@@ -240,8 +265,21 @@
                                 android:layout_height="wrap_content"
                                 android:padding="16dp"
                                 android:text="Today's Uptime"
-                                android:textColor="@color/black"
+                                android:textColor="@color/white"
                                 android:textSize="16dp" />
+
+
+                            <TextView
+                                android:id="@+id/uptime_total"
+                                style="@style/MaterialAlertDialog.Material3.Body.Text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableRight="@drawable/baseline_access_time_24"
+                                android:padding="16dp"
+                                android:text="25 Mins"
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+
 
                             <TextView
                                 android:id="@+id/SeeLog"
@@ -250,7 +288,7 @@
                                 android:drawableRight="@drawable/baseline_chevron_right_24"
                                 android:padding="10dp"
                                 android:text="See Log"
-                                android:textColor="@color/black" />
+                                android:textColor="@color/white" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -259,16 +297,12 @@
 
             <TextView
                 android:id="@+id/home_order_label"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:text="Completed Orders"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/order_card"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
+                android:layout_below="@+id/horizontalScrollView2" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/order_card"
@@ -278,18 +312,24 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="32dp"
-                app:cardCornerRadius="25dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home_order_label">
+                android:layout_below="@+id/home_order_label">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/material_dynamic_secondary60"
+                    android:background="@color/material_dynamic_primary40"
                     android:orientation="vertical"
                     android:padding="16dp">
+                    <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textSize="18sp"
+                        android:text="See the completed Orders"
+                        android:drawableRight="@drawable/baseline_chevron_right_24"
+                        android:background="#3E000000"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/textView17"
@@ -297,7 +337,7 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:text="Alex's Order 100$"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/textView18"
@@ -305,7 +345,7 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:text="Quentin's Order 200$"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/appearance"
@@ -313,7 +353,7 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:text="Nolan's Order 350$"
-                        android:textColor="@color/material_dynamic_primary95" />
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/about"
@@ -321,7 +361,7 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:text="Denis's Order 300$"
-                        android:textColor="@color/material_dynamic_primary95" />
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/textView19"
@@ -329,12 +369,12 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:text="Martin's Order 400$"
-                        android:textColor="@color/material_dynamic_primary95" />
+                        android:textColor="@color/white" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
 

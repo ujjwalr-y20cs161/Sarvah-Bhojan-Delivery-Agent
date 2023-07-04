@@ -1,9 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".About">
+    tools:context=".Landing">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/customActionBar"
+        style="@style/Widget.Material3.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/actionBar"
+        android:elevation="5dp"
+        android:gravity="center">
+
+        <!-- Back button -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_chevron_left_24" />
+
+        <!-- Custom text -->
+        <TextView
+            android:id="@+id/actionBarText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="16dp"
+            android:text="About"
+            android:textColor="@color/material_dynamic_primary10"
+            android:textSize="20sp" />
+        <!-- Settings icon -->
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/customActionBar"
+        android:layout_marginTop="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:gravity="center_horizontal">
+            <!-- Agent Greeting -->
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                android:layout_marginBottom="8dp"
+                android:text="Sarva Bhojan Delivery App"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/About_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/About_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                android:text="The Deendayal Antyodaya Yojana - National Urban Livelihoods Mission (DAY-NULM) is a flagship program launched by the Indian government to alleviate poverty and enhance livelihood opportunities for the urban poor. Implemented by the Ministry of Housing and Urban Affairs, DAY-NULM has been in operation since September 2013.  \n\nThe primary objective of DAY-NULM is to reduce poverty and vulnerability among the urban poor by facilitating their access to gainful self-employment and skilled wage employment opportunities. The program focuses on organizing the urban poor into self-help groups (SHGs) and providing them with a range of support services, including financial assistance, skill training, access to credit, and social mobilization.  Here are the key components and interventions of DAY-NULM:\n\n  1. Social Mobilization and Institution Development: DAY-NULM aims to mobilize and empower the urban poor by organizing them into SHGs. These groups enable collective decision-making and provide a platform for the urban poor to voice their concerns and interests. DAY-NULM supports the formation of SHGs, their federations, and community-based organizations.  \n\n2. Skill Development and Capacity Building: The program focuses on enhancing the employability of the urban poor through skill training. It provides vocational training in various sectors, including construction, retail, hospitality, healthcare, and more. Skill development programs equip beneficiaries with the necessary knowledge and abilities to secure sustainable livelihoods.  \n\n3. Employment and Self-Employment Assistance: DAY-NULM facilitates access to employment and self-employment opportunities. It supports urban poor individuals in finding wage employment through placement services and job fairs. Additionally, the program offers assistance for setting up micro-enterprises and accessing credit for entrepreneurial ventures.  \n\n4. Financial Inclusion: DAY-NULM promotes financial inclusion by facilitating access to credit and other financial services for the urban poor. It encourages the formation of community-based organizations that provide financial assistance, savings and credit facilities, and micro-insurance services to the urban poor.  \n\n5. Support for Shelter and Social Security: The program aims to address the housing and social security needs of the urban poor. It supports the construction of affordable housing units and provides rental housing facilities for the homeless. DAY-NULM also helps in accessing healthcare services, education, and social protection programs.\n\n  DAY-NULM is a comprehensive mission that focuses on empowering the urban poor by improving their livelihood opportunities, fostering their entrepreneurial spirit, and providing them with the necessary support to break the cycle of poverty. \n\n\n\tDesigned and Developed By \n\t~~ Ujjwal R Sanagapati 😇😇😄\n\tUnder TULIP : DAY-NULM"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</RelativeLayout>
+

@@ -1,9 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".Landing">
+
+<com.google.android.material.appbar.MaterialToolbar
+    android:id="@+id/customActionBar"
+    style="@style/Widget.Material3.Toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/actionBar"
+    android:elevation="5dp"
+    android:gravity="center">
+
+    <!-- Back button -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/baseline_chevron_left_24" />
+
+    <!-- Custom text -->
+    <TextView
+        android:id="@+id/actionBarText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="16dp"
+        android:text="Tutorials"
+        android:textColor="@color/material_dynamic_primary10"
+        android:textSize="20sp" />
+    <!-- Settings icon -->
+
+</com.google.android.material.appbar.MaterialToolbar>
+
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tutorial">
+    android:layout_below="@+id/customActionBar"
+    android:layout_marginTop="0dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:gravity="center_horizontal">
+        <!-- Agent Greeting -->
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:layout_marginBottom="8dp"
+            android:text="Delivery Agent Tutorials"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/About_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/About_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:text="Step 1: Download and Install the App\nVisit the Google Play Store or Apple App Store on your smartphone..\nSearch for the 'Food Delivery Agent App' and click on the app.\nTap on the 'Install' button to download and install the app on your device..\n\nStep 2: Login or Create an Account\nLaunch the app after installation.\nIf you already have an account, enter your login credentials (username and password) and click on the 'Login' button.\nIf you're a new user, click on the 'Create Account' or 'Sign Up' button and follow the on-screen instructions to create a new account.\n\nStep 3: Complete Profile Setup\nAfter logging in or creating an account, you may be prompted to complete your profile setup.\nProvide the required information, such as your name, contact details, and delivery vehicle details (if applicable).\nSave your profile settings.\n\nStep 4: Accepting Delivery Requests.\nOn the app's main screen, you will see a list of available delivery requests or orders..\nTap on a request to view the details, including the customer's address, order items, and delivery instructions.\nReview the details and tap on the 'Accept' button if you're available to fulfill the order..\n\nStep 5: Navigating to the Customer's Location.\nOnce you accept a delivery request, the app may provide you with an option to navigate to the customer's location..\nTap on the 'Navigate' or 'Get Directions' button to launch your preferred navigation app (such as Google Maps) and get turn-by-turn directions to the customer's address..\n\nStep 6: Pickup and Delivery.\n.\nArrive at the customer's location and locate their exact address..\nContact the customer if necessary, using the provided contact details, to coordinate the pickup or delivery process..\nVerify the order details with the customer and confirm any special instructions..\nCollect the order from the restaurant or pickup location, ensuring that it matches the customer's order details..\nSafely transport the order to the customer's delivery address..\n\nStep 7: Marking the Order as Delivered.\nOnce you've successfully delivered"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+</RelativeLayout>
+
