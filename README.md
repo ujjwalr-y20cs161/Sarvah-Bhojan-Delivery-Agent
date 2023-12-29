@@ -19,7 +19,7 @@ The Sarva Bhojan Project is divided into four main parts for implementation:
 3. **Delivery Agent Application**
 4. **Backend**
 
-   ## Features
+## Features of the Sarvah Bhojan Platform
 
 - **User Application:**
   - User-friendly interface for browsing and ordering food.
@@ -42,10 +42,39 @@ The Sarva Bhojan Project is divided into four main parts for implementation:
 - **Database:**
   - MongoDB for efficient and scalable data storage.
   - Ensures data security and integrity.
+ 
+## Key Features of the Delivery Agent Application:
+
+1. **Material You and Material 3 UI:**
+   - The application follows the Material You design principles, providing a personalized and adaptive UI experience.
+   - Material 3 components are utilized for a modern and consistent user interface.
+
+2. **Dynamic Themes:**
+   - The inclusion of dynamic themes enhances the user experience by adapting to the system's appearance.
+
+3. **Documentation and Testing:**
+   - The project is meticulously documented to ensure clarity and ease of understanding.
+   - Frequent unit tests and integration tests are conducted to ensure the reliability and functionality of the application.
+
+4. **Google Maps API:**
+   - Integration of Google Maps API for efficient route planning and navigation.
+
+5. **Map Intent Usage:**
+   - The application uses Map Intent to seamlessly integrate with mapping applications for real-time navigation.
+
+6. **User Authentication using Firebase:**
+   - Firebase is employed for secure user authentication, ensuring a reliable and secure login system.
+
+7. **Temporary Prototype Database using Firebase:**
+   - Firebase is utilized as a temporary prototype database to manage orders feed and store statistics of delivery agents.
+
+8. **Clean Initiative UI:**
+   - The user interface is designed with a clean and intuitive layout to facilitate easy navigation for delivery agents.
 
 ## Implementation:
 
 Our implementation began with developing the **Delivery Agent Application** using Android Studio. The application utilizes Material You and Material 3 UI, incorporating dynamic themes for an enhanced user experience.
+
 
 The project is meticulously documented, and frequent unit tests and integration tests are conducted to ensure the reliability and functionality of the application.
 
