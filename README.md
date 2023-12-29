@@ -1,22 +1,25 @@
-# Sarva Bhojan [Food for All] Mobile Application
+# Sarva Bhojan [Food for All] Delivery Agent Application
 
-Welcome to the Sarva Bhojan [Food for All] project repository! This mobile application aims to connect Community Kitchens, Customers, and Delivery Agents, creating a seamless and efficient platform for food delivery services.
+Welcome to the Sarva Bhojan [Food for All] Delivery Agent Application repository! This mobile application is designed to empower delivery agents to efficiently manage delivery requests and contribute to the reach of Community Kitchens.
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
+## Problem Statement:
 
-## Introduction
+**Problem:**
+Community Kitchens run by Self Help Groups (SHGs) are essential during COVID-19 and for working-class people. However, SHGs struggle to reach their potential customers.
 
-Sarva Bhojan [Food for All] is a digital ecosystem that facilitates the interaction between users, community kitchens, and delivery agents. The mobile application provides customers with an intuitive platform to browse, order, and pay for food from Community Kitchens. Community Kitchens, in turn, can manage their offerings, accept or deny orders, and view payment history through a responsive web dashboard. Delivery agents can use a dedicated mobile app to accept or deny delivery requests, plan routes, and confirm deliveries.
+**Solution:**
+Mobilizing community kitchen services to a digital platform can increase reach. The Sarva Bhojan project addresses this by creating a digital platform where SHGs can post food offerings, and customers can easily order and receive their meals. Additionally, the platform provides employment opportunities for unemployed youth as delivery agents, who can safely deliver the prepared food.
 
-## Features
+## Project Overview:
+
+The Sarva Bhojan Project is divided into four main parts for implementation:
+
+1. **Main User Application**
+2. **Community Kitchen Dashboard**
+3. **Delivery Agent Application**
+4. **Backend**
+
+   ## Features
 
 - **User Application:**
   - User-friendly interface for browsing and ordering food.
@@ -40,56 +43,48 @@ Sarva Bhojan [Food for All] is a digital ecosystem that facilitates the interact
   - MongoDB for efficient and scalable data storage.
   - Ensures data security and integrity.
 
-## Getting Started
+## Implementation:
 
-To get started with Sarva Bhojan, follow the steps outlined in the [Installation](#installation) section. The application is designed to connect users, community kitchens, and delivery agents, providing a holistic solution for food delivery services.
+Our implementation began with developing the **Delivery Agent Application** using Android Studio. The application utilizes Material You and Material 3 UI, incorporating dynamic themes for an enhanced user experience.
 
-## Installation
+The project is meticulously documented, and frequent unit tests and integration tests are conducted to ensure the reliability and functionality of the application.
 
-1. Clone the repository to your local machine:
+### Screenshots:
 
-   ```bash
-   git clone https://github.com/your-username/sarva-bhojan-mobile-app.git
-   ```
+Here are a few screens from the Delivery Agent Application:
 
-2. Follow the setup instructions for the [User Application](#user-application-android), [Community Kitchen Dashboard Application](#community-kitchen-dashboard-application-angular), and [Delivery Agent Application](#delivery-agent-application-android).
+1. **Login:**
+   ![Login Screen](/screenshots/login_screen.png)
 
-3. Set up the [Backend Server](#backend-server) and [Database](#database) by following the provided instructions.
+2. **Sign Up:**
+   ![Sign Up Screen](/screenshots/signup_screen.png)
 
-4. Test the entire system using the [Testing Steps](#testing-steps) outlined in the documentation.
+3. **Landing/Home:**
+   ![Home Screen](/screenshots/home_screen.png)
 
-## Usage
+4. **Order Screen:**
+   ![Order Screen](/screenshots/order_screen.png)
 
-Detailed information on how to use the application can be found in the [Usage](#usage) section of the documentation. This includes instructions for customers, community kitchens, and delivery agents on how to navigate and utilize the features of the mobile application.
+5. **Order Tracker Screen:**
+   ![Order Tracker Screen](/screenshots/order_tracker_screen.png)
 
-## Technologies Used
+6. **Settings Screen:**
+   ![Settings Screen](/screenshots/settings_screen.png)
 
-- **User Application:**
-  - Android Studio with Java and XML
-  - LiveData for state management
-  - Retrofit for backend communication
+7. **Profile Screen:**
+   ![Profile Screen](/screenshots/profile_screen.png)
 
-- **Community Kitchen Dashboard Application:**
-  - Angular with TypeScript
-  - RxJS for state management
-  - Material Design for UI following Google Material 3 standards
+8. **Splash Screens:**
+   ![Splash Screen](/screenshots/splash_screen.png)
 
-- **Delivery Agent Application:**
-  - Android Studio with Java and XML
-  - Integration with mapping and navigation APIs
+### How to Try:
 
-- **Backend Server:**
-  - Node.js with Express.js
-  - MongoDB for data storage
-  - JSON Web Tokens (JWT) for authentication
+The application can be experienced by downloading the APK from the [Releases](https://github.com/your-username/sarva-bhojan-delivery-agent/releases) section of this GitHub repository.
 
-- **Database:**
-  - MongoDB
+## Contributing:
 
-## Contributing
+Contributions to the Sarva Bhojan project are welcome! If you have suggestions, found issues, or want to contribute, please follow the guidelines in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Contributions to Sarva Bhojan are welcome! Feel free to open issues, submit pull requests, or provide feedback on how we can improve the project. See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
+## License:
 
-## License
-
-This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code for your own projects.
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code for your projects.
