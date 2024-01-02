@@ -20,7 +20,7 @@ The Sarva Bhojan Project is divided into four main parts for implementation:
 4. **Backend**
 
 
-Link to Project Slides : https://www.canva.com/design/DAFmqY0rt_0/jH45Bu6CAgkf-TmD3C84Ew/edit?utm_content=DAFmqY0rt_0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+Link to Project Slides : https://www.canva.com/design/DAFmqY0rt_0/KbFnnbxNV61dxWrvRUbJDg/view?utm_content=DAFmqY0rt_0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
 
 
 </hr>
