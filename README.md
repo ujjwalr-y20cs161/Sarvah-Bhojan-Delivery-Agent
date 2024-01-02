@@ -129,7 +129,7 @@ Here are a few screens from the Delivery Agent Application:
 
 ### How to Try:
 
-The application can be experienced by downloading the APK from the [Releases](https://github.com/your-username/sarva-bhojan-delivery-agent/releases) section of this GitHub repository.
+The application can be experienced by downloading the APK from the [Releases](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/releases) section of this GitHub repository.
 
 ## Contributing:
 
