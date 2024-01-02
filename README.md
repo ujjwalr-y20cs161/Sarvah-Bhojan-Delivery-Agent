@@ -23,8 +23,10 @@ The Sarva Bhojan Project is divided into four main parts for implementation:
 Link to Project Slides : https://www.canva.com/design/DAFmqY0rt_0/jH45Bu6CAgkf-TmD3C84Ew/edit?utm_content=DAFmqY0rt_0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 
+</hr>
 
 <h4 style=" text-algin : center; ">Main Architecture of Sarvah Bhojan Platform</h4>
+
 ![Main Architecture of Sarvah Bhojan Platfrom](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/32a623d4-4fe3-49b2-8a28-f927de225a94)
 
 
