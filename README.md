@@ -8,7 +8,7 @@ Welcome to the Sarva Bhojan [Food for All] Delivery Agent Application repository
 Community Kitchens run by Self Help Groups (SHGs) are essential during COVID-19 and for working-class people. However, SHGs struggle to reach their potential customers.
 
 **Solution:**
-Mobilizing community kitchen services to a digital platform can increase reach. The Sarva Bhojan project addresses this by creating a digital platform where SHGs can post food offerings, and customers can easily order and receive their meals. Additionally, the platform provides employment opportunities for unemployed youth as delivery agents, who can safely deliver the prepared food.
+Mobilizing community kitchen services to a digital platform can increase reach. The Sarva Bhojan project addresses this by creating a digital platform where SHGs can post food offerings, and customers can easily order and receive their meals. Additionally, the platform provides employment opportunities for unemployed youth as delivery agents, who can safely deliver prepared food.
 
 ## Project Overview:
 
@@ -18,6 +18,11 @@ The Sarva Bhojan Project is divided into four main parts for implementation:
 2. **Community Kitchen Dashboard**
 3. **Delivery Agent Application**
 4. **Backend**
+
+![Main Architecture of Sarvah Bhojan Platfrom](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/32a623d4-4fe3-49b2-8a28-f927de225a94)
+
+![Detailed Architecture](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/ccd38c24-0a56-4b61-bed6-62900de5b6b2)
+
 
 ## Features of the Sarvah Bhojan Platform
 
@@ -42,7 +47,33 @@ The Sarva Bhojan Project is divided into four main parts for implementation:
 - **Database:**
   - MongoDB for efficient and scalable data storage.
   - Ensures data security and integrity.
- 
+
+
+## Implementation:
+
+Our implementation began with developing the **Delivery Agent Application** using Android Studio. The application utilizes Material You and Material 3 UI, incorporating dynamic themes for an enhanced user experience.
+
+
+The project is meticulously documented, and frequent unit tests and integration tests are conducted to ensure the reliability and functionality of the application.
+
+### Screenshots:
+
+Here are a few screens from the Delivery Agent Application:
+
+![Login & Registration Screens](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/3253e775-0303-45d2-9b2a-9bacf8063e9b)
+
+![Main Screen](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/c5aaee49-4525-4d0a-a7ad-00b03648f433)
+
+![Order Screen](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/2b47b442-08e0-488d-a8f2-c20ce5641b07)
+
+![Map Screen and Confirmation Screen](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/ca7a2c87-c9a3-4dbb-aff9-00295a1635b9)
+
+![Settings Screen](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/d1e73537-0b1d-4e5f-85f6-b178306c4dc4)
+
+
+
+
+
 ## Key Features of the Delivery Agent Application:
 
 1. **Material You and Material 3 UI:**
@@ -70,41 +101,6 @@ The Sarva Bhojan Project is divided into four main parts for implementation:
 
 8. **Clean Initiative UI:**
    - The user interface is designed with a clean and intuitive layout to facilitate easy navigation for delivery agents.
-
-## Implementation:
-
-Our implementation began with developing the **Delivery Agent Application** using Android Studio. The application utilizes Material You and Material 3 UI, incorporating dynamic themes for an enhanced user experience.
-
-
-The project is meticulously documented, and frequent unit tests and integration tests are conducted to ensure the reliability and functionality of the application.
-
-### Screenshots:
-
-Here are a few screens from the Delivery Agent Application:
-
-1. **Login:**
-   ![Login Screen](/screenshots/login_screen.png)
-
-2. **Sign Up:**
-   ![Sign Up Screen](/screenshots/signup_screen.png)
-
-3. **Landing/Home:**
-   ![Home Screen](/screenshots/home_screen.png)
-
-4. **Order Screen:**
-   ![Order Screen](/screenshots/order_screen.png)
-
-5. **Order Tracker Screen:**
-   ![Order Tracker Screen](/screenshots/order_tracker_screen.png)
-
-6. **Settings Screen:**
-   ![Settings Screen](/screenshots/settings_screen.png)
-
-7. **Profile Screen:**
-   ![Profile Screen](/screenshots/profile_screen.png)
-
-8. **Splash Screens:**
-   ![Splash Screen](/screenshots/splash_screen.png)
 
 ### How to Try:
 
