@@ -23,10 +23,14 @@ The Sarva Bhojan Project is divided into four main parts for implementation:
 Link to Project Slides : https://www.canva.com/design/DAFmqY0rt_0/jH45Bu6CAgkf-TmD3C84Ew/edit?utm_content=DAFmqY0rt_0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 
+
 ![Main Architecture of Sarvah Bhojan Platfrom](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/32a623d4-4fe3-49b2-8a28-f927de225a94)
+
+<center>**Main Architecture of Sarvah Bhojan Platform**</center>
 
 ![Detailed Architecture](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/ccd38c24-0a56-4b61-bed6-62900de5b6b2)
 
+<center>**Detailed Architecture**</center>
 
 ## Features of the Sarvah Bhojan Platform
 
@@ -64,16 +68,26 @@ The project is meticulously documented, and frequent unit tests and integration 
 
 Here are a few screens from the Delivery Agent Application:
 
+
 ![Login & Registration Screens](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/3253e775-0303-45d2-9b2a-9bacf8063e9b)
+
+<center>**Login & Registration Screens**</center>
 
 ![Main Screen](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/c5aaee49-4525-4d0a-a7ad-00b03648f433)
 
+<center>*Main Screen**<center>
+
 ![Order Screen](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/2b47b442-08e0-488d-a8f2-c20ce5641b07)
+
+<center>**Order Screen**</center>
 
 ![Map Screen and Confirmation Screen](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/ca7a2c87-c9a3-4dbb-aff9-00295a1635b9)
 
+<center>**Map and Confirmation Screen**</center>
+
 ![Settings Screen](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/d1e73537-0b1d-4e5f-85f6-b178306c4dc4)
 
+<center>**Settings Screen**</center>
 
 
 
