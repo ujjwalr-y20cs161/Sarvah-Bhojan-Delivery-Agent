@@ -26,7 +26,7 @@ Link to Project Slides : https://www.canva.com/design/DAFmqY0rt_0/jH45Bu6CAgkf-T
 
 ![Main Architecture of Sarvah Bhojan Platfrom](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/32a623d4-4fe3-49b2-8a28-f927de225a94)
 
-<h4 style="text-algin : center">**Main Architecture of Sarvah Bhojan Platform**</h4>
+<h4 style=" text-algin : center; ">Main Architecture of Sarvah Bhojan Platform</h4>
 
 ![Detailed Architecture](https://github.com/ujjwalr-y20cs161/Sarvah-Bhojan-Delivery-Agent/assets/95554295/ccd38c24-0a56-4b61-bed6-62900de5b6b2)
 
